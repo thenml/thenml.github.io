@@ -7,7 +7,7 @@
 }
 
 .u-section-1 .u-text-1 {
-  margin: 60px auto 0;
+  margin: 208px auto 0;
 }
 
 .u-section-1 .u-text-2 {
@@ -16,8 +16,9 @@
 }
 
 .u-section-1 .u-btn-1 {
-  background-image: none;
+  font-size: 1.5rem;
   margin: 30px auto 60px;
+  padding: 11px 30px 12px;
 }
 
 @media (max-width: 1199px) {
@@ -37,7 +38,6 @@
 
 @media (max-width: 767px) {
   .u-section-1 .u-text-1 {
-    margin-top: 209px;
     margin-left: 38px;
     margin-right: 38px;
   }
