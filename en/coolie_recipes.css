@@ -56,60 +56,72 @@
 }
 
 .mc-gui {
+  --size: 2;
+
   font-family:Minecraft,sans-serif;
   display: flex;
   flex-wrap: wrap;
   padding: 10px;
   margin-top: 10px;
+  margin-bottom: 50px;
   box-sizing: border-box;
   background: #c6c6c6;
   border-color: #373737 #fff #fff #373737;
   border-style: solid;
   border-width: 4px;
-  column-gap: 40px;
+}
+.mc-gui.mc-gui-size-s{
+  --size: 3;
 }
 
 .mc-items {  
-  padding-left: 20px;
-  padding-right: 20px;
-  padding: 10px;
+  padding: calc(40px / var(--size));
+  padding-left:1%;
+  padding-right:1%;
   display: flex;
   flex-direction: row;
   align-items: center;
 }
 
+
+.mc-gui-buttons {
+  font-family:Minecraft,sans-serif;
+  display:inline-block;
+  padding: 10px;
+  margin: 30px;
+  background: #c6c6c6;
+  border-color: #373737 #fff #fff #373737;
+  border-style: solid;
+  border-width: 4px;
+}
 .mc-recipes {
   margin: 0% 5%;
   align-items: center;
 
-  gap: 80px;
+  gap: calc(160px / var(--size));
   grid-template-columns: repeat(auto-fill, 2000px);
 }
 
-
 .craft-grid {
   flex-wrap: wrap;
-  
   display: grid;
-  grid-template-columns: repeat(3, 54px);
-  grid-template-rows: repeat(3, 54px);
+
+  grid-template-columns: repeat(3, calc(108px / var(--size)));
+  grid-template-rows: repeat(3, calc(108px / var(--size)));
 }
 .arrow {
-  width: 48px;
-  height: 39px;
-  margin-left: 24px;
-  margin-right: 24px;
-  background: url("../assets/coolie/arrow.png");
+  margin-left: calc(14px / var(--size));
+  margin-right: calc(14px / var(--size));
 }
-.item-img {
-  display:inline-block;
-  background-image: url("../assets//coolie//spritesheet.png");
-  background-size: 1000%;
+.extra-icon {
+  display: inline-flex;
+}
+.extra-icon .item-img {
+  margin-bottom: calc(-144px / var(--size));
+  height:calc(72px / var(--size));
+  width: calc(72px / var(--size));
 
-  height:50px;
-  width:50px;
-
-  background-position:calc(var(--x) * -50px) calc(var(--y) * -50px);
+  background-position:calc(6px / var(--size) - var(--x) * 72px / var(--size)) calc(6px / var(--size) - var(--y) * 72px / var(--size));
 }
 
 .cell {  
@@ -121,43 +133,64 @@
   align-items: center;
   display: flex;
   flex-wrap: wrap;  
+  border-width: calc(8px / var(--size));
 }
 .cell:hover {
   background: #eee;
 }
 
 .cell-l {
-  border-width: 4px;
-  width: 108px;
-  height: 108px;
+  width: calc(316px / var(--size));
+  height: calc(316px / var(--size));
 }
 .cell-m {
-  border-width: 4px;
-  width: 72px;
-  height: 72px;
-}
-.cell-s {
-  border-width: 3px;
-  width: 54px;
-  height: 54px;
-}
-.craft-result .cell {
   align-items:stretch;
   padding: 12%;
+  width: calc(144px / var(--size));
+  height: calc(144px / var(--size));
+}
+.cell-s {
+  width: calc(108px / var(--size));
+  height: calc(108px / var(--size));
 }
 
+.item-img {
+  display:inline-block;
+  background-image: url("../assets//coolie//spritesheet.png");
+  background-size: 1000%;
+
+  height:calc(96px / var(--size));
+  width: calc(96px / var(--size));
+
+  background-position:calc(6px / var(--size) - var(--x) * 96px / var(--size)) calc(6px / var(--size) - var(--y) * 96px / var(--size));
+}
+.mc-gui-buttons .item-img {
+  height:calc(144px / var(--size));
+  width:calc(144px / var(--size));
+
+  background-position:calc(6px / var(--size) - var(--x) * 144px / var(--size)) calc(6px / var(--size) - var(--y) * 144px / var(--size));
+}
+.mc-gui-buttons .item-img-next {
+  height:calc(144px / var(--size));
+  width:calc(144px / var(--size));
+
+  background-position:calc(6px / var(--size) - calc(var(--x) + 1) * 144px / var(--size)) calc(6px / var(--size) - var(--y) * 144px / var(--size));
+}
+.mc-gui-button:hover{
+  cursor: pointer;
+  background-position:calc(6px / var(--size) - calc(var(--x) + 1) * 144px / var(--size)) calc(6px / var(--size) - var(--y) * 144px / var(--size));
+}
 .mc-nbt {
-  margin-top: 40px;
+  margin: 10px;
   text-align:left;
-  display: inline-block;
-  flex-wrap: wrap;  
+  display:block;
   background-color:#100010;
   background-color:rgba(16,0,16,.94);
   color:#fff;
   padding:.375em;
   font-family:Minecraft,sans-serif;
-  font-size:16px;
-  word-spacing:4px;
+  font-size:calc(48px / calc(var(--size) + 1));
+  word-spacing:calc(12px / calc(var(--size) + 1));
   line-height:1.25em;
   text-shadow:.125em .125em 0 #3f3f3f;
   pointer-events:none;
@@ -166,9 +199,11 @@
   border-image: linear-gradient(rgba(80, 0, 255, 0.31), rgba(40, 0, 127, 0.31)) 1;
 }
 
+/*#region mc-tooltip*/
 .mc-tooltip {
   --mc-color:#ffffff;
 
+  display: none;
   text-align:left;
   position:fixed;
   top:0;
@@ -176,8 +211,8 @@
   background-color:rgba(16,0,16,.94);
   padding:.375em;
   font-family:Minecraft,sans-serif;
-  font-size:16px;
-  word-spacing:4px;
+  font-size:calc(48px / calc(var(--size) + 1));
+  word-spacing:calc(12px / calc(var(--size) + 1));
   white-space:nowrap;
   line-height:1.25em;
   text-shadow:.125em .125em 0 calc(#3f3f3f * var(--mc-color));
@@ -212,11 +247,7 @@
  .mc-tooltip>div:first-of-type {
   margin-bottom: 4px;
  }
- .cell .mc-tooltip{
-  display: none;
-}
 
-/*#region mc-tooltip-colors*/
 .mctc-black       {--mc-color: #000000;}
 .mctc-dark_blue   {--mc-color: #0000AA;}
 .mctc-dark_green  {--mc-color: #00AA00;}
@@ -235,7 +266,7 @@
 .mctc-white       {--mc-color: #FFFFFF;}
 
 .mctc-extra       {display: inline;}
-/*#endregion mc-tooltip-colors*/
+/*#endregion mc-tooltip*/
 
 @media (max-width: 1342px) {
   .u-section-1 .u-sheet-1 {
@@ -274,53 +305,13 @@
     margin-left: 227px;
   }
 
-  .mc-gui {  
-    column-gap: 15px;
+  .mc-gui{
+    --size: 3;
   }
-  .mc-recipes {
-    grid-gap: 80px;
-  }
-  .item-select {
-    width: 100%;
-    float: none;
+  .mc-gui.mc-gui-size-s{
+    --size: 4;
   }
 
-  .item-desc {
-    width: 100%;
-    float: none;
-  }
-  .item-img {
-    height:33.6px;
-    width:33.6px;
-  
-    background-position:calc(var(--x) * -33.6px) calc(var(--y) * -33.6px);
-  }
-  .craft-grid {
-    grid-template-columns: repeat(3, 36px);
-    grid-template-rows: repeat(3, 36px);
-  }
-  .arrow {
-    width: 32px;
-    height: 26px;
-    margin-left: 16px;
-    margin-right: 16px;
-    background: url("../assets/coolie/arrow_small.png");
-  }
-  .cell-l {
-    border-width: 2px;
-    width: 72px;
-    height: 72px;
-  }
-  .cell-m {
-    border-width: 2px;
-    width: 48px;
-    height: 48px;
-  }
-  .cell-s {
-    border-width: 2px;
-    width: 36px;
-    height: 36px;
-  }
 }
 
 @media (max-width: 991px) {
