@@ -59,7 +59,7 @@
 .u-section-3 .u-image-1 {
   width: 130px;
   height: 130px;
-  background-image: url("../images/discord.png");
+  background-image: url("../assets/images/discord.png");
   background-position: 50% 50%;
   transition-duration: 0.5s;
   transform: translateX(0px) translateY(0px) scale(1) rotate(0deg);
@@ -83,7 +83,7 @@
 .u-section-3 .u-image-2 {
   width: 130px;
   height: 130px;
-  background-image: url("../images/youtube.png");
+  background-image: url("../assets/images/youtube.png");
   background-position: 50% 50%;
   transition-duration: 0.5s;
   transform: translateX(0px) translateY(0px) scale(1) rotate(0deg);
@@ -107,7 +107,7 @@
 .u-section-3 .u-image-3 {
   width: 130px;
   height: 130px;
-  background-image: url("../images/github.png");
+  background-image: url("../assets/images/github.png");
   background-position: 50% 50%;
   transition-duration: 0.5s;
   transform: translateX(0px) translateY(0px) scale(1) rotate(0deg);
@@ -131,7 +131,7 @@
 .u-section-3 .u-image-4 {
   width: 130px;
   height: 130px;
-  background-image: url("../images/minecraft.png");
+  background-image: url("../assets/images/minecraft.png");
   background-position: 50% 50%;
   transition-duration: 0.5s;
   transform: translateX(0px) translateY(0px) scale(1) rotate(0deg);
@@ -155,7 +155,7 @@
 .u-section-3 .u-image-5 {
   width: 130px;
   height: 130px;
-  background-image: url("../images/gd.png");
+  background-image: url("../assets/images/gd.png");
   background-position: 50% 50%;
   transition-duration: 0.5s;
   transform: translateX(0px) translateY(0px) scale(1) rotate(0deg);
@@ -179,7 +179,7 @@
 .u-section-3 .u-image-6 {
   width: 130px;
   height: 130px;
-  background-image: url("../images/tetrio-color.png");
+  background-image: url("../assets/images/tetrio-color.png");
   background-position: 50% 50%;
   transition-duration: 0.5s;
   transform: translateX(0px) translateY(0px) scale(1) rotate(0deg);

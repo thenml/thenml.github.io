@@ -1,0 +1,412 @@
+/*#region nicepage*/
+.u-section-1 .u-sheet-1 {
+  min-height: 536px;
+}
+
+.u-section-1 .u-product-1 {
+  margin-top: 60px;
+  margin-bottom: 60px;
+  min-height: 510px;
+  height: auto;
+}
+
+.u-section-1 .u-container-layout-1 {
+  padding: 0 30px;
+}
+
+.u-section-1 .u-group-1 {
+  width: 439px;
+  min-height: 360px;
+  height: auto;
+  margin: 30px 0 0 auto;
+}
+
+.u-section-1 .u-container-layout-2 {
+  padding: 30px;
+}
+
+.u-section-1 .u-product-price-1 {
+  margin: 0 auto 0 0;
+}
+
+.u-section-1 .u-text-1 {
+  margin: 15px auto 0 0;
+}
+
+.u-section-1 .u-text-2 {
+  margin: 42px 0 0;
+}
+
+.u-section-1 .u-custom-html-1 {
+  height: auto;
+  min-height: 360px;
+  margin: -360px 776px 0 0;
+}
+
+.u-section-1 .u-custom-html-2 {
+  height: auto;
+  min-height: 299px;
+  margin: -360px 454px 0 327px;
+}
+/*#endregion nicepage*/
+
+@font-face {
+  font-family: 'Minecraft';
+  src: url(../assets/Minecraft.woff) format('woff');
+}
+
+.mc-gui {
+  font-family:Minecraft,sans-serif;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 10px;
+  margin-top: 10px;
+  box-sizing: border-box;
+  background: #c6c6c6;
+  border-color: #373737 #fff #fff #373737;
+  border-style: solid;
+  border-width: 4px;
+  column-gap: 40px;
+}
+
+.mc-items {  
+  padding-left: 20px;
+  padding-right: 20px;
+  padding: 10px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.mc-recipes {
+  margin: 0% 5%;
+  align-items: center;
+
+  gap: 80px;
+  grid-template-columns: repeat(auto-fill, 2000px);
+}
+
+
+.craft-grid {
+  flex-wrap: wrap;
+  
+  display: grid;
+  grid-template-columns: repeat(3, 54px);
+  grid-template-rows: repeat(3, 54px);
+}
+.arrow {
+  width: 48px;
+  height: 39px;
+  margin-left: 24px;
+  margin-right: 24px;
+  background: url("../assets/coolie/arrow.png");
+}
+.item-img {
+  display:inline-block;
+  background-image: url("../assets//coolie//spritesheet.png");
+  background-size: 1000%;
+
+  height:50px;
+  width:50px;
+
+  background-position:calc(var(--x) * -50px) calc(var(--y) * -50px);
+}
+
+.cell {  
+  position: relative;
+  background-color: #8b8b8b;
+  border-color: #373737 #fff #fff #373737;
+  border-style: solid;
+  vertical-align: middle;
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;  
+}
+.cell:hover {
+  background: #eee;
+}
+
+.cell-l {
+  border-width: 4px;
+  width: 108px;
+  height: 108px;
+}
+.cell-m {
+  border-width: 4px;
+  width: 72px;
+  height: 72px;
+}
+.cell-s {
+  border-width: 3px;
+  width: 54px;
+  height: 54px;
+}
+.craft-result .cell {
+  align-items:stretch;
+  padding: 12%;
+}
+
+.mc-nbt {
+  margin-top: 40px;
+  text-align:left;
+  display: inline-block;
+  flex-wrap: wrap;  
+  background-color:#100010;
+  background-color:rgba(16,0,16,.94);
+  color:#fff;
+  padding:.375em;
+  font-family:Minecraft,sans-serif;
+  font-size:16px;
+  word-spacing:4px;
+  line-height:1.25em;
+  text-shadow:.125em .125em 0 #3f3f3f;
+  pointer-events:none;
+  z-index:99;
+  border: 2px solid #2D0A63;
+  border-image: linear-gradient(rgba(80, 0, 255, 0.31), rgba(40, 0, 127, 0.31)) 1;
+}
+
+.mc-tooltip {
+  --mc-color:#ffffff;
+
+  text-align:left;
+  position:fixed;
+  top:0;
+  left:0;
+  background-color:rgba(16,0,16,.94);
+  padding:.375em;
+  font-family:Minecraft,sans-serif;
+  font-size:16px;
+  word-spacing:4px;
+  white-space:nowrap;
+  line-height:1.25em;
+  text-shadow:.125em .125em 0 calc(#3f3f3f * var(--mc-color));
+  margin:.125em .25em;
+  pointer-events:none;
+  z-index:99
+ }
+ .mc-tooltip:before {
+  right:-.125em;
+  left:-.125em;
+  border-color:#100010;
+  border-color:rgba(16,0,16,.94);
+  border-style:none solid;
+  border-width:.125em
+ }
+ .mc-tooltip:after,
+ .mc-tooltip:before {
+  content:"";
+  position:absolute;
+  top:.125em;
+  bottom:.125em
+ }
+ .mc-tooltip:after {
+  right:0;
+  left:0;
+  border:2px solid #2d0a63;
+  border-image:linear-gradient(rgba(80,0,255,.31),rgba(40,0,127,.31)) 1
+ }
+ .mc-tooltip>div {
+  color: var(--mc-color);
+ }
+ .mc-tooltip>div:first-of-type {
+  margin-bottom: 4px;
+ }
+ .cell .mc-tooltip{
+  display: none;
+}
+
+/*#region mc-tooltip-colors*/
+.mctc-black       {--mc-color: #000000;}
+.mctc-dark_blue   {--mc-color: #0000AA;}
+.mctc-dark_green  {--mc-color: #00AA00;}
+.mctc-dark_aqua   {--mc-color: #00AAAA;}
+.mctc-dark_red    {--mc-color: #AA0000;}
+.mctc-dark_purple {--mc-color: #AA00AA;}
+.mctc-gold        {--mc-color: #FFAA00;}
+.mctc-gray        {--mc-color: #AAAAAA;}
+.mctc-dark_gray   {--mc-color: #555555;}
+.mctc-blue        {--mc-color: #5555FF;}
+.mctc-green       {--mc-color: #55FF55;}
+.mctc-aqua        {--mc-color: #55FFFF;}
+.mctc-red         {--mc-color: #FF5555;}
+.mctc-light_purple{--mc-color: #FF55FF;}
+.mctc-yellow      {--mc-color: #FFFF55;}
+.mctc-white       {--mc-color: #FFFFFF;}
+
+.mctc-extra       {display: inline;}
+/*#endregion mc-tooltip-colors*/
+
+@media (max-width: 1342px) {
+  .u-section-1 .u-sheet-1 {
+    min-height: 834px;
+  }
+
+  .u-section-1 .u-group-1 {
+    min-height: 299px;
+    margin-top: 390px;
+    margin-bottom: -73px;
+    margin-right: initial;
+    margin-left: initial;
+    width: auto;
+    height: auto;
+  }
+
+  .u-section-1 .u-container-layout-2 {
+    padding-top: 23px;
+    padding-bottom: 23px;
+  }
+
+  .u-section-1 .u-product-price-1 {
+    margin-top: -63px;
+  }
+
+  .u-section-1 .u-text-2 {
+    margin-right: auto;
+  }
+
+  .u-section-1 .u-custom-html-1 {
+    margin-right: 576px;
+  }
+
+  .u-section-1 .u-custom-html-2 {
+    margin-right: 354px;
+    margin-left: 227px;
+  }
+
+  .mc-gui {  
+    column-gap: 15px;
+  }
+  .mc-recipes {
+    grid-gap: 80px;
+  }
+  .item-select {
+    width: 100%;
+    float: none;
+  }
+
+  .item-desc {
+    width: 100%;
+    float: none;
+  }
+  .item-img {
+    height:33.6px;
+    width:33.6px;
+  
+    background-position:calc(var(--x) * -33.6px) calc(var(--y) * -33.6px);
+  }
+  .craft-grid {
+    grid-template-columns: repeat(3, 36px);
+    grid-template-rows: repeat(3, 36px);
+  }
+  .arrow {
+    width: 32px;
+    height: 26px;
+    margin-left: 16px;
+    margin-right: 16px;
+    background: url("../assets/coolie/arrow_small.png");
+  }
+  .cell-l {
+    border-width: 2px;
+    width: 72px;
+    height: 72px;
+  }
+  .cell-m {
+    border-width: 2px;
+    width: 48px;
+    height: 48px;
+  }
+  .cell-s {
+    border-width: 2px;
+    width: 36px;
+    height: 36px;
+  }
+}
+
+@media (max-width: 991px) {
+  .u-section-1 .u-custom-html-1 {
+    margin-right: 356px;
+  }
+
+  .u-section-1 .u-custom-html-2 {
+    margin-right: 244px;
+    margin-left: 117px;
+  }
+  
+}
+
+@media (max-width: 767px) {
+  .u-section-1 .u-sheet-1 {
+    min-height: 773px;
+  }
+
+  .u-section-1 .u-product-1 {
+    margin-bottom: -1px;
+  }
+
+  .u-section-1 .u-container-layout-1 {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  .u-section-1 .u-group-1 {
+    margin-top: 293px;
+    margin-bottom: -38px;
+    width: auto;
+    margin-right: initial;
+    margin-left: initial;
+  }
+
+  .u-section-1 .u-container-layout-2 {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  .u-section-1 .u-custom-html-1 {
+    margin-right: 216px;
+  }
+
+  .u-section-1 .u-custom-html-2 {
+    margin-right: 174px;
+    margin-left: 47px;
+  }
+  
+}
+
+@media (max-width: 575px) {
+  .u-section-1 .u-sheet-1 {
+    min-height: 1015px;
+  }
+
+  .u-section-1 .u-product-1 {
+    margin-top: 55px;
+    margin-bottom: 55px;
+  }
+
+  .u-section-1 .u-group-1 {
+    min-height: 310px;
+    margin-top: 570px;
+    margin-bottom: -73px;
+    width: auto;
+    margin-right: initial;
+    margin-left: initial;
+  }
+
+  .u-section-1 .u-product-price-1 {
+    margin-top: -76px;
+  }
+
+  .u-section-1 .u-text-1 {
+    margin-top: 28px;
+  }
+
+  .u-section-1 .u-custom-html-1 {
+    margin-right: 16px;
+  }
+
+  .u-section-1 .u-custom-html-2 {
+    margin-right: 21px;
+    margin-left: 0;
+  }
+}
+
