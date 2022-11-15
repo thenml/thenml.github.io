@@ -2,10 +2,12 @@ const recipes = JSON.parse(data);
 let mc_recipes = document.getElementById('recipes');
 
 recipes.forEach(category => {
-    let name = document.createElement("div");
+    let name = document.createElement("a");
     name.append(category.text);
+    name.id = category.id;
+    name.href = "#" + name.id
     name.className = "mc-nbt"
-
+    
     let gui = document.createElement("div");
     gui.className = "mc-gui"
 
