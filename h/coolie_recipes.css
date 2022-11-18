@@ -69,7 +69,7 @@
   display: inline-flex;
 }
 .extra-icon .item-img {
-  margin-bottom: calc(-144px / var(--size));
+  margin-bottom: calc(((-2 * (8 - var(--size)) + 4) * (11 - var(--size))) * 1px);
   height:calc(72px / var(--size));
   width: calc(72px / var(--size));
 
