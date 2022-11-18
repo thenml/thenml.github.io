@@ -1,25 +1,30 @@
 <!DOCTYPE html>
-<html style="font-size: 16px;" lang="en"><head>
+<html style="font-size: 16px;"><head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="utf-8">
-    <meta name="description" content="the official nml site">
+    
     <title>nml - CooliePack Recipes</title>
+    <meta name="description" content="Recipes for mc Datapack &quot;CooliePack&quot;">
+
     <link rel="stylesheet" href="../nicepage.css" media="screen">
     <link rel="stylesheet" href="coolie_recipes.css" media="screen">
     <script class="u-script" type="text/javascript" src="../jquery.js" defer=""></script>
     <script class="u-script" type="text/javascript" src="../nicepage.js" defer=""></script>
     <script class="u-script" type="text/javascript" src="../assets/coolie/data.js"></script>
+    <script class="u-script" type="text/javascript" src="../index.js" defer=""></script>
     <script class="u-script" type="text/javascript" src="coolie_recipes.js" defer=""></script>
+    <script class="u-script" type="text/javascript" src="../translator.js" defer=""></script>
     <meta name="generator" content="Nicepage 4.19.3, nicepage.com">
     
     <link id="u-theme-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i">
     
     <meta name="theme-color" content="#004baf">
     <meta property="og:title" content="nml - CooliePack Recipes">
-    <meta property="og:description" content="the official nml site">
+    <meta property="og:description" content="Recipes for mc Datapack &quot;CooliePack&quot;">
     <meta property="og:type" content="website">
   </head>
-  <body class="u-body u-xl-mode" data-lang="en"><header class="u-clearfix u-header u-header" id="sec-8e97"><div class="u-clearfix u-sheet u-sheet-1">
+  <body class="u-body u-xl-mode">
+  <header class="u-clearfix u-header u-header"><div class="u-clearfix u-sheet u-sheet-1">
     <div class="u-image u-logo u-image-1" data-image-width="605" data-image-height="250">
       <img src="../assets/images/nml_logo.png" class="u-logo-image u-logo-image-1">
     </div>
@@ -39,16 +44,16 @@
         </div>
 
         <div class="u-custom-menu u-nav-container">
-          <ul class="u-nav u-unstyled"><li class="u-nav-item"><a class="u-button-style u-nav-link" href="home">Home</a>
-          </li><li class="u-nav-item"><a class="u-button-style u-nav-link" href="support">Support</a>
+          <ul class="u-nav u-unstyled"><li class="u-nav-item"><a class="u-button-style u-nav-link" href="home" tr-tag="navbar.home">Home</a>
+          </li><li class="u-nav-item"><a class="u-button-style u-nav-link" href="support" tr-tag="navbar.support">Support</a>
           </li></ul>
         </div>
         <div class="u-custom-menu u-nav-container-collapse">
           <div class="u-black u-container-style u-inner-container-layout u-opacity u-opacity-95 u-sidenav">
             <div class="u-inner-container-layout u-sidenav-overflow">
               <div class="u-menu-close"></div>
-              <ul class="u-align-center u-nav u-popupmenu-items u-unstyled u-nav-2"><li class="u-nav-item"><a class="u-button-style u-nav-link" href="home">Home</a>
-              </li><li class="u-nav-item"><a class="u-button-style u-nav-link" href="support">Support</a>
+              <ul class="u-align-center u-nav u-popupmenu-items u-unstyled u-nav-2"><li class="u-nav-item"><a class="u-button-style u-nav-link" href="home" tr-tag="navbar.home">Home</a>
+              </li><li class="u-nav-item"><a class="u-button-style u-nav-link" href="support" tr-tag="navbar.support">Support</a>
               </li></ul>
             </div>
           </div>
@@ -59,15 +64,19 @@
 
     <section class="mc-recipes u-clearfix" id="recipes">
       <div class="mc-items mc-gui mc-gui-buttons">
-        <div class="mc-nbt">Settings</div>
-        <div class="item-img mc-gui-button" onclick="resizeItems(this)" style="--x: 2;--y: 10">
+        <div class="mc-nbt" tr-tag="coolie.settings">Settings</div>
+        <div class="item-img mc-gui-button" onclick='resizeItems(this); setCookie("coolie-small")' style="--x: 2;--y: 10" id="settings.ch_size">
           <img class="item-img" style="--x: 0;--y: 10">
-          <div class="mc-tooltip"><div>Change size</div></div>
+          <div class="mc-tooltip"><div tr-tag="coolie.settings.ch_size">Change size</div></div>
+        </div>
+        <div class="item-img mc-gui-button" onclick='changeTheme(this); setCookie("coolie-dark")' style="--x: 2;--y: 10" id="settings.ch_theme">
+          <img class="item-img" style="--x: 6;--y: 10">
+          <div class="mc-tooltip"><div tr-tag="coolie.settings.ch_theme">Toggle dark mode</div></div>
         </div>
       </div>
     </section>
     
-    <footer class="u-align-center u-clearfix u-footer u-footer" id="sec-38a1"><div class="u-clearfix u-sheet u-sheet-1">
+    <footer class="u-align-center u-clearfix u-footer u-footer"><div class="u-clearfix u-sheet u-sheet-1">
         <p class="u-small-text u-text u-text-variant u-text-1">-nml</p>
       </div></footer>  
 </body></html>

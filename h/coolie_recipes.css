@@ -1,6 +1,6 @@
 @font-face {
   font-family: 'Minecraft';
-  src: url(../assets/Minecraft.woff) format('woff');
+  src: url(../assets/Minecraftia.woff) format('woff');
 }
 
 .mc-gui {
@@ -20,6 +20,10 @@
 }
 .mc-gui.mc-gui-size-s{
   --size: 3;
+}
+.mc-gui.mc-gui-dark {
+  background: #535353;
+  border-color: #333333 #6b6b6b #6b6b6b #333333;
 }
 
 .mc-items {  
@@ -86,6 +90,13 @@
 .cell:hover {
   background: #eee;
 }
+.cell.mc-gui-dark {  
+  background-color: #333;
+  border-color: #262626 #6b6b6b #6b6b6b #262626;
+}
+.cell.mc-gui-dark:hover {
+  background: #999;
+}
 
 .cell-l {
   width: calc(316px / var(--size));
@@ -139,6 +150,8 @@ img.item-img {
   background-color:rgba(16,0,16,.94);
   color:#fff;
   padding:.375em;
+  padding-top: .75em;
+  padding-bottom: 0;
   font-family:Minecraft,sans-serif;
   font-size:calc(48px / calc(var(--size) + 1));
   word-spacing:calc(12px / calc(var(--size) + 1));
@@ -160,6 +173,8 @@ img.item-img {
   left:0;
   background-color:rgba(16,0,16,.94);
   padding:.375em;
+  padding-top: .75em;
+  padding-bottom: 0;
   font-family:Minecraft,sans-serif;
   font-size:calc(48px / calc(var(--size) + 1));
   word-spacing:calc(12px / calc(var(--size) + 1));
