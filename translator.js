@@ -25,8 +25,6 @@ if (!selected_lang){ // if no search params present
             selected_lang = "en"
         }
     }
-    searchParams.set("lang",selected_lang);
-    window.location.search = searchParams;
 }
 setCookie("lang",selected_lang)
 
