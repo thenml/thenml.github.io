@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html style="font-size: 16px;">
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta charset="utf-8">
+
+		<title>nml - Music</title>
+		<meta name="description" content="better shuffle for youtube">
+
+		<link rel="stylesheet" href="../nicepage.css" media="screen">
+		<link rel="stylesheet" href="player.css" media="screen">
+		<script class="u-script" type="text/javascript" src="../jquery.js" defer=""></script>
+		<script class="u-script" type="text/javascript" src="../nicepage.js" defer=""></script>
+		<script class="u-script" type="text/javascript" src="../index.js" defer=""></script>
+		<script class="u-script" type="text/javascript" src="playlist-main.js" defer=""></script>
+		<script class="u-script" type="text/javascript" src="player.js" defer=""></script>
+		<script class="u-script" type="text/javascript" src="../translator.js" defer=""></script>
+		<meta name="generator" content="Nicepage 4.19.3, nicepage.com">
+		
+		<link id="u-theme-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i">
+		
+		<meta name="theme-color" content="#004baf">
+		<meta property="og:title" content="nml - Music">
+		<meta property="og:description" content="better shuffle for youtube">
+		<meta property="og:type" content="website">
+	</head>
+  <body class="u-body u-xl-mode">
+		<header class="u-clearfix u-header u-header"><div class="u-clearfix u-sheet u-sheet-1">
+      <div class="u-image u-logo u-image-1" data-image-width="605" data-image-height="250">
+        <img src="../assets/images/nml_logo.png" class="u-logo-image u-logo-image-1">
+      </div>
+      <div class="u-social-icons u-spacing-10 u-social-icons-1">
+        <a class="u-social-url" target="_blank" data-type="Custom" title="Discord" href="https://discord.com/users/645877523481362432"><span class="u-file-icon u-icon u-social-custom u-social-icon u-text-white u-icon-1"><img src="../assets/images/discord_auth.png" alt=""></span>
+        </a>
+        <a class="u-social-url" target="_blank" data-type="Custom" title="Github" href="https://github.com/thenml"><span class="u-file-icon u-icon u-social-custom u-social-icon u-icon-2"><img src="../assets/images/github_auth.png" alt=""></span>
+        </a>
+      </div>
+      <nav class="u-menu u-menu-one-level u-offcanvas u-menu-1">
+        <div class="menu-collapse">
+          <a class="u-button-style u-nav-link" href="#">
+            <svg class="u-svg-link" viewBox="0 0 24 24"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg-ba38"></use></svg>
+            <svg class="u-svg-content" version="1.1" id="svg-ba38" viewBox="0 0 16 16" x="0px" y="0px" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg"><g><rect y="1" width="16" height="2"></rect><rect y="7" width="16" height="2"></rect><rect y="13" width="16" height="2"></rect>
+            </g></svg>
+          </a>
+        </div>
+
+        <div class="u-custom-menu u-nav-container">
+          <ul class="u-nav u-unstyled"><li class="u-nav-item"><a class="u-button-style u-nav-link" href="../h/home" tr-tag="navbar.home">Home</a>
+          </li><li class="u-nav-item"><a class="u-button-style u-nav-link" href="../h/support" tr-tag="navbar.support">Support</a>
+          </li></ul>
+        </div>
+        <div class="u-custom-menu u-nav-container-collapse">
+          <div class="u-black u-container-style u-inner-container-layout u-opacity u-opacity-95 u-sidenav">
+            <div class="u-inner-container-layout u-sidenav-overflow">
+              <div class="u-menu-close"></div>
+              <ul class="u-align-center u-nav u-popupmenu-items u-unstyled u-nav-2"><li class="u-nav-item"><a class="u-button-style u-nav-link" href="../h/home" tr-tag="navbar.home">Home</a>
+              </li><li class="u-nav-item"><a class="u-button-style u-nav-link" href="../h/support" tr-tag="navbar.support">Support</a>
+              </li></ul>
+            </div>
+          </div>
+          <div class="u-black u-menu-overlay u-opacity u-opacity-70"></div>
+        </div>
+      </nav>
+      </div></header>
+
+		<div class="yt-view">
+			<div class="yt-player-wrapper">
+				<div id="player" class="yt-player"></div>
+				<div class="settings">
+					<span><span  tr-tag="st.seed">seed </span><input id="btn-seed" type="text" class="btn-seed" placeholder="-" onkeydown="setSeed(event)"></input></span>
+					<span><span  tr-tag="st.rand">randomness </span><input id="btn-r" type="text" class="btn-r" placeholder="-" onkeydown="setR(event)"></input></span>
+					<span><span tr-tag="st.skip1">skip to </span><input id="btn-skip" type="number" class="btn-skip" onkeydown="videoGoto(event)"></input><span tr-tag="st.skip2"> in queue</span></span>
+					<span tr-tag="st.warn">the ui is not final</span>
+				</div>
+			</div>
+			<div id="playlist" class="yt-playlist">
+				<div class="pl-video">
+					<span><img class="player-thumb" src="https://img.youtube.com/vi/default.jpg"></span>
+					<span class="pl-text"></span>
+				</div>
+				<div class="pl-video" style="cursor: pointer" onclick="loadNewVideo()">
+					<span><img class="player-thumb" src="https://img.youtube.com/vi/default.jpg"></span>
+					<span class="pl-text"></span>
+				</div>
+				<div class="pl-video" style="cursor: pointer" onclick="inum+=1;loadNewVideo()">
+					<span><img class="player-thumb" src="https://img.youtube.com/vi/default.jpg"></span>
+					<span class="pl-text"></span>
+				</div>
+				<div class="pl-video" style="cursor: pointer" onclick="inum+=2;loadNewVideo()">
+					<span><img class="player-thumb" src="https://img.youtube.com/vi/default.jpg"></span>
+					<span class="pl-text"></span>
+				</div>
+				<div class="pl-video" style="cursor: pointer" onclick="inum+=3;loadNewVideo()">
+					<span><img class="player-thumb" src="https://img.youtube.com/vi/default.jpg"></span>
+					<span class="pl-text"></span>
+				</div>
+			</div>
+		</div>
+  </body>
+</html>

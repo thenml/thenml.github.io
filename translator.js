@@ -16,8 +16,7 @@ translations = jsonConcat({ // global translations
     }
 }, translations);
 
-const searchParams = new URLSearchParams(window.location.search);
-let selected_lang = searchParams.get("lang");
+selected_lang = searchParams.get("lang");
 if (!selected_lang){ // if no search params present
     selected_lang = getCookie("lang");
     if (!selected_lang){
@@ -49,9 +48,7 @@ for(var i =0; i < allDom.length; i++){ // loop through all translatable emements
     //add window url params to to the href's params
     if (e.href.includes("thenml.github.io/h/")){
         const url = new URL(e.href)
-        for (let [k,v] of new URLSearchParams(window.location.search).entries()){
-        url.searchParams.set(k,v)
-        }
+        url.searchParams.set("lang",selected_lang)
         e.href = url.toString();
     }
 })

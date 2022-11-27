@@ -1,0 +1,53 @@
+.yt-view{
+    display: flex;
+    margin: auto;
+    width: 70%;
+    padding: 10px;
+}
+.yt-player-wrapper{
+    display: block;
+    aspect-ratio: 19/8;
+}
+.yt-playlist{
+    border: none;
+    border-radius: 5%;
+    display: block;
+    background-color: #3e4753;
+    width: 25%;
+    margin-left: auto;
+    padding: 2%;
+}
+.pl-video{
+    display: flex;
+    border: none;
+    border-radius: 5%;
+    height: 18%;
+    background-color: #000;
+    margin-bottom: 5%;
+    vertical-align:middle;
+    align-items: center;
+}
+.pl-video:first-of-type{
+    background-color: #11151a;
+}
+.pl-text{
+    display: inline;
+}
+.settings{
+    display: flex;
+    flex-wrap: wrap;  
+}
+.settings span{
+    background-color: #3e4753;
+    padding: 10px;
+    margin: 10px;
+    border-radius: 5%;
+}
+input{
+    background-color: #11151a;
+    width: 3em;
+}
+input::placeholder {
+
+}
+  

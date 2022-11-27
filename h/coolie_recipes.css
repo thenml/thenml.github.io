@@ -151,7 +151,6 @@ img.item-img {
   color:#fff;
   padding:.375em;
   padding-top: .75em;
-  padding-bottom: 0;
   font-family:Minecraft,sans-serif;
   font-size:calc(48px / calc(var(--size) + 1));
   word-spacing:calc(12px / calc(var(--size) + 1));
@@ -174,7 +173,6 @@ img.item-img {
   background-color:rgba(16,0,16,.94);
   padding:.375em;
   padding-top: .75em;
-  padding-bottom: 0;
   font-family:Minecraft,sans-serif;
   font-size:calc(48px / calc(var(--size) + 1));
   word-spacing:calc(12px / calc(var(--size) + 1));
