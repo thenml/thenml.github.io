@@ -1,4 +1,4 @@
-let lttrs = "ABCEGHIKLMNQRSTWXYZ"
+const lttrs = "ABCEGHIKLMNQRSTWXYZ"
 
 const searchParamsp = new URLSearchParams(window.location.search);
 let r = Number(searchParamsp.get("r")) || 15;
@@ -12,10 +12,15 @@ if (s){
         searchParamsp.set("seed",s);
     }
     var seed = (lttrs.indexOf(s[0])*19 + lttrs.indexOf(s[1])%19);
+
+    var inum = (Number(searchParamsp.get("idx")) || 1)-2;
 }
 else{
     var seed = Math.floor(Math.random() * 358) + 1;
     s = lttrs[Math.floor(seed/19)] + lttrs[seed%19];
+    searchParamsp.set("seed",s);image.png
+
+    var inum = -1;    
 }
 
 var randint = function(min, max) {
@@ -52,6 +57,12 @@ function loadNewVideo(){
         thumbs[i].src = 'https://img.youtube.com/vi/'+ videoList[shuffleList[i + Math.min(inum, videoCount-5)]] +'/1.jpg';        
         thumbs[i].parentElement.nextElementSibling.innerHTML = '#' + (i + Math.min(inum, videoCount-5)+1) + '<br>' + '('+(shuffleList[i + Math.min(inum, videoCount-5)]+1)+'/'+videoCount+')';
     }
+
+    searchParamsp.set("idx",inum+1);
+    if (history.pushState) {
+        var newurl = window.location.protocol + "//" + window.location.host + window.location.pathname + '?' + searchParamsp.toString();
+        window.history.pushState({path:newurl},'',newurl);
+    }
 }
 function videoGoto(e){
     e = e || window.event;
@@ -80,11 +91,15 @@ function setSeed(e){
         var elem = e.srcElement || e.target;
         n = elem.value.toUpperCase();
         if ( !(lttrs.includes(n[0]) && lttrs.includes(n[1]) && n.length==2)){
-            TSH=s=>{for(var i=0,h=9;i<s.length;)h=Math.imul(h^s.charCodeAt(i++),9**9);return (((h^h>>>9)%361)+361)%361}
-            n = TSH(n);
+            if (n.length==0){n = Math.floor(Math.random() * 358) + 1;}
+            else{
+                TSH=s=>{for(var i=0,h=9;i<s.length;)h=Math.imul(h^s.charCodeAt(i++),9**9);return (((h^h>>>9)%361)+361)%361}
+                n = TSH(n);
+            }
             n = lttrs[Math.floor(n/19)] + lttrs[n%19];
         }
         searchParamsp.set("seed",n);
+        searchParamsp.set("idx",'');
         window.location.search = searchParamsp;
     }
 }
@@ -100,7 +115,7 @@ firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 //    This function creates an <iframe> (and YouTube player)
 //    after the API code downloads.
 var player;
-var videoList, videoCount, inum=-1;
+var videoList, videoCount;
 var userPlaylistURL = ''
 
 function onYouTubeIframeAPIReady() {
