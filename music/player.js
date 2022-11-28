@@ -254,6 +254,8 @@ var translations = {
         "st.skip1":"skip to ",
         "st.skip2":" in queue",
         "st.warn":"the ui is not final",
+        "st.playlist1":"load playlist ",
+        "st.playlist2":" (loads only the first 200 videos)",
     },
     "ru":{
         "st.seed":"сид",
@@ -261,5 +263,7 @@ var translations = {
         "st.skip1":"перейти к ",
         "st.skip2":" в очереди",
         "st.warn":"этот интерфейс не финальный",
+        "st.playlist1":"загрузить плейлист ",
+        "st.playlist2":" (только первые 200 видео)",
     }
 }
