@@ -3,6 +3,7 @@ const lttrs = "ABCEGHIKLMNQRSTWXYZ"
 const searchParamsp = new URLSearchParams(window.location.search);
 let r = Number(searchParamsp.get("r")) || 15;
 var s = searchParamsp.get("seed");
+let plid = searchParamsp.get("plid");
 
 if (s){
     if ( !(lttrs.includes(s[0]) && lttrs.includes(s[1]) && s.length==2)){
@@ -18,7 +19,7 @@ if (s){
 else{
     var seed = Math.floor(Math.random() * 358) + 1;
     s = lttrs[Math.floor(seed/19)] + lttrs[seed%19];
-    searchParamsp.set("seed",s);image.png
+    searchParamsp.set("seed",s);
 
     var inum = -1;    
 }
@@ -44,9 +45,13 @@ let thumbs = document.getElementsByClassName('player-thumb');
 let btn_skip = document.getElementById('btn-skip');
 let btn_r = document.getElementById('btn-r');
 let btn_seed = document.getElementById('btn-seed');
+let btn_playlist = document.getElementById('btn-playlist');
+let yt_bg = document.getElementById('yt-bg');
 
 btn_r.value = r;
 btn_seed.value = s;
+btn_playlist.value = plid;
+
 
 function loadNewVideo(){
     inum +=1;
@@ -57,6 +62,8 @@ function loadNewVideo(){
         thumbs[i].src = 'https://img.youtube.com/vi/'+ videoList[shuffleList[i + Math.min(inum, videoCount-5)]] +'/1.jpg';        
         thumbs[i].parentElement.nextElementSibling.innerHTML = '#' + (i + Math.min(inum, videoCount-5)+1) + '<br>' + '('+(shuffleList[i + Math.min(inum, videoCount-5)]+1)+'/'+videoCount+')';
     }
+
+    yt_bg.style.backgroundImage = "url('https://img.youtube.com/vi/"+ videoList[shuffleList[inum]] +"/1.jpg')";
 
     searchParamsp.set("idx",inum+1);
     if (history.pushState) {
@@ -104,6 +111,35 @@ function setSeed(e){
     }
 }
 
+
+function youtube_validate(url) {
+    var regExp = /^(?:https?:\/\/)?(?:www\.)?youtube\.com(?:\S+)?$/;
+    return url.match(regExp)&&url.match(regExp).length>0;
+}
+//get playlist id from url
+function youtube_playlist_parser(url){
+    var reg = new RegExp("[&?]list=([a-z0-9_\\-]+)","i");
+    var match = reg.exec(url);
+
+    if (match&&match[1].length>0&&youtube_validate(url)){
+        return match[1];
+    } else {return undefined;}
+}    
+
+function loadPlaylist(e){
+    e = e || window.event;
+    if(e.keyCode == 13) {
+        var elem = e.srcElement || e.target;
+        n = youtube_playlist_parser(elem.value);
+        if (n){
+            searchParamsp.set("plid",n);
+            searchParamsp.set("seed",'');
+            searchParamsp.set("idx",'');
+            window.location.search = searchParamsp;
+        }
+    }
+}
+
 //    https://developers.google.com/youtube/iframe_api_reference
 //    This code loads the IFrame Player API code asynchronously.
 var tag = document.createElement('script');
@@ -119,55 +155,52 @@ var videoList, videoCount;
 var userPlaylistURL = ''
 
 function onYouTubeIframeAPIReady() {
-player = new YT.Player('player', {
-        events:
-        {
-            'onReady': onPlayerReady,
-            'onStateChange': onPlayerStateChange
-        },
+    if (!plid){
+        player = new YT.Player('player', {
+            events:{
+                'onReady': onPlayerReady,
+                'onStateChange': onPlayerStateChange
+            },
 
-        playerVars:
-        {
-            controls:1,
-            autoplay:0,
-            playsinline: 1
-        }
-    });
+            playerVars:{
+                controls:1,
+                autoplay:0,
+                playsinline: 1
+            }
+        });
+    }else{
+        loader = new YT.Player('loader', {
+            width:1,
+            height:1,
+            events:{
+                'onReady': onLoaderReady,
+                'onStateChange': onLoaderStateChange
+            },
+            playerVars:{
+                controls:1,
+                autoplay:0,
+                playsinline: 1
+            }
+        });
+    }
 }
 
 function onPlayerReady(event)
 {
-    // https://stackoverflow.com/questions/34635614/get-all-the-video-ids-from-a-youtube-playlist-into-a-php-array-using-youtube-ap
-    // cue the playlist, to get the video's ids 
-    /*
-    */
-    if (userPlaylistURL){
-        event.target.cuePlaylist
-        ({
-            listType: 'playlist',
-            list: userPlaylistURL,
-            suggestedQuality:'small',
-            autoplay: 0,
-            index:0,
-        });        
-    }else{
+    if (!videoList){
         videoList = ids;
         videoCount = videoList.length;
-
-        shuffleList = biased_shuffle(videoCount);
-        console.log(shuffleList);
-
-        loadNewVideo();
     }
+
+    shuffleList = biased_shuffle(videoCount);
+    console.log(shuffleList);
+
+    loadNewVideo();
 }
 function onPlayerStateChange(event)
 {
     if(event.data == YT.PlayerState.CUED)
     {
-        if (!videoList){
-            videoList = event.target.getPlaylist();
-            videoCount = videoList.length;
-        }
         event.target.playVideo();
     }
 
@@ -178,29 +211,39 @@ function onPlayerStateChange(event)
     }
 }
 
-
-
-
-
-
-
-
-function youtube_validate(url) {
-    var regExp = /^(?:https?:\/\/)?(?:www\.)?youtube\.com(?:\S+)?$/;
-    return url.match(regExp)&&url.match(regExp).length>0;
+function onLoaderReady(event)
+{
+    // https://stackoverflow.com/questions/34635614/get-all-the-video-ids-from-a-youtube-playlist-into-a-php-array-using-youtube-ap
+    // cue the playlist, to get the video's ids
+    event.target.cuePlaylist({
+        listType: 'playlist',
+        list: plid,
+        suggestedQuality:'small',
+        autoplay: 1,
+        index:0,
+    });
 }
-//get playlist id from url
-function youtube_playlist_parser(url){
-    var reg = new RegExp("[&?]list=([a-z0-9_]+)","i");
-    var match = reg.exec(url);
+function onLoaderStateChange(event)
+{
+    if(event.data == YT.PlayerState.CUED){
+        videoList = event.target.getPlaylist();
+        videoCount = videoList.length;
+        event.target.destroy();
+        player = new YT.Player('player', {
+            events:{
+                'onReady': onPlayerReady,
+                'onStateChange': onPlayerStateChange
+            },
 
-    if (match&&match[1].length>0&&youtube_validate(url)){
-        return match[1];
-    }else{
-        return "nope";
+            playerVars:{
+                controls:1,
+                autoplay:0,
+                playsinline: 1
+            }
+        });
     }
+}
 
-}    
 
 
 
