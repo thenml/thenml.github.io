@@ -1,3 +1,108 @@
+.h-logo{
+  box-sizing: border-box;
+  width: 154px;
+  height: 64px;
+  margin: 24px auto 0;
+}
+.h-header .h-logo-image{
+  height: 64px;
+  width: 154px;
+}
+
+.h-social-icons{
+  display: flex;
+  height: 32px;
+  width: 74px;
+  min-height: 16px;
+  min-width: 42px;
+  margin: -48px 0 0 auto;
+  gap:10px;
+}
+.h-social-icon{
+  height: 32px;
+}
+.h-social-icon img{
+  object-fit: contain;
+  width: 100%;
+  height: 100%;
+}
+
+.h-lang-select{
+  padding: 0;
+  display: flex;
+  height: 48px;
+  width: 48px;
+  min-height: 24px;
+  min-width: 24px;
+  margin: -98px 144px 0 auto;
+  appearance: none;
+  background-color: #11151aaf;
+  border-radius: 12px;
+  border: 0;
+  text-align: center;
+  font-size: xx-large;
+  cursor: pointer;
+}
+
+.h-menu{
+  margin: -34px auto 60px 0;
+  height: 32px;
+  display: table;
+  white-space: nowrap;
+  position: relative;
+  line-height: 1;
+}
+.h-menu-ul{
+  display: inline-block;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.h-menu-ul a{
+  padding: 10px 20px;
+}
+.h-menu-item{
+  display: inline-block;
+  position: relative;
+  vertical-align: middle;
+  padding: 0;
+  margin: 0;
+  height: 100%;
+}
+
+@media (max-width:767px) {
+  .h-menu{
+    margin-left: -30px;
+    display: flex;
+    white-space: normal;  
+    width: 0px;
+  }
+  .h-lang-select{
+    margin: -98px 108px 0 auto;
+  }
+}
+@media (max-width:575px) {
+  .h-lang-select{
+    margin: -48px 0 0 auto;
+  }
+}
+
+.h-footer{
+  display: flex;
+  min-height: 180px;
+  text-align: center;
+}
+.h-footer *{
+  display: inline-block;
+  align-self: flex-end;
+  padding-bottom: 30px;
+}
+
+
+
+
+
+
 /*begin-commonstyles library*//*!
  * froala_editor v4.0.6 (https://www.froala.com/wysiwyg-editor)
  * License https://froala.com/wysiwyg-editor/terms/

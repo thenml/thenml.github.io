@@ -26,7 +26,7 @@ if (!selected_lang){ // if no search params present
         }
     }
 }
-setCookie("lang",selected_lang)
+setCookie("lang",selected_lang);
 
 let allDom = document.getElementsByTagName("*");
 for(var i =0; i < allDom.length; i++){ // loop through all translatable emements (tr-tag)
@@ -45,8 +45,15 @@ for(var i =0; i < allDom.length; i++){ // loop through all translatable emements
 [...document.querySelectorAll('a')].forEach(e=>{
     //add window url params to to the href's params
     if (e.href.includes("thenml.github.io/h/")){
-        const url = new URL(e.href)
-        url.searchParams.set("lang",selected_lang)
+        const url = new URL(e.href);
+        url.searchParams.set("lang",selected_lang);
         e.href = url.toString();
     }
 })
+
+document.getElementById('langSelect').value = selected_lang;
+
+function langSelect(language) {
+    setCookie("lang",language);
+    location.reload();
+}

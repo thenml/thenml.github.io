@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html style="font-size: 16px;"><head>
+<html style="font-size: 16px;">
+  <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="utf-8">
 
@@ -34,102 +35,75 @@
       <li></li>
       <li></li>
       <li></li>
-    </ul>    
-    <header class="u-clearfix u-header u-header"><div class="u-clearfix u-sheet u-sheet-1">
-      <div class="u-image u-logo u-image-1" data-image-width="605" data-image-height="250">
-        <img src="../assets/images/nml_logo.png" class="u-logo-image u-logo-image-1">
-      </div>
-      <div class="u-social-icons u-spacing-10 u-social-icons-1">
-        <a class="u-social-url" target="_blank" data-type="Custom" title="Discord" href="https://discord.com/users/645877523481362432"><span class="u-file-icon u-icon u-social-custom u-social-icon u-text-white u-icon-1"><img src="../assets/images/discord_auth.png" alt=""></span>
-        </a>
-        <a class="u-social-url" target="_blank" data-type="Custom" title="Github" href="https://github.com/thenml"><span class="u-file-icon u-icon u-social-custom u-social-icon u-icon-2"><img src="../assets/images/github_auth.png" alt=""></span>
-        </a>
-      </div>
-      <nav class="u-menu u-menu-one-level u-offcanvas u-menu-1">
-        <div class="menu-collapse">
-          <a class="u-button-style u-nav-link" href="#">
-            <svg class="u-svg-link" viewBox="0 0 24 24"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg-ba38"></use></svg>
-            <svg class="u-svg-content" version="1.1" id="svg-ba38" viewBox="0 0 16 16" x="0px" y="0px" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg"><g><rect y="1" width="16" height="2"></rect><rect y="7" width="16" height="2"></rect><rect y="13" width="16" height="2"></rect>
-            </g></svg>
+    </ul>   
+    <header class="h-header">
+      <div class="u-sheet">
+        <div class="h-logo">
+          <img src="../assets/images/nml_logo.png" class="h-logo-image">
+        </div>
+        <nav class="h-social-icons">
+          <a class="h-social-icon" title="Discord" href="https://discord.com/users/645877523481362432"><img src="../assets/images/discord_auth.png" alt="">
           </a>
+          <a class="h-social-icon" title="Github" href="https://github.com/thenml"><img src="../assets/images/github_auth.png" alt="">
+          </a>
+        </nav>
+        <div class="h-menu">
+          <ul class="h-menu-ul">
+            <li class="h-menu-item"><a href="home" tr-tag="navbar.home">Home</a></li>
+            <li class="h-menu-item"><a href="support" tr-tag="navbar.support">Support</a></li>
+          </ul>
         </div>
+        <select class="h-lang-select" id="langSelect" onchange="langSelect(this.value);">
+          <option value="en">🇺🇸</option>
+          <option value="ru">🇷🇺</option>
+        </select>
+      </div>
+    </header>
 
-        <div class="u-custom-menu u-nav-container">
-          <ul class="u-nav u-unstyled"><li class="u-nav-item"><a class="u-button-style u-nav-link" href="home" tr-tag="navbar.home">Home</a>
-          </li><li class="u-nav-item"><a class="u-button-style u-nav-link" href="support" tr-tag="navbar.support">Support</a>
-          </li></ul>
-        </div>
-        <div class="u-custom-menu u-nav-container-collapse">
-          <div class="u-black u-container-style u-inner-container-layout u-opacity u-opacity-95 u-sidenav">
-            <div class="u-inner-container-layout u-sidenav-overflow">
-              <div class="u-menu-close"></div>
-              <ul class="u-align-center u-nav u-popupmenu-items u-unstyled u-nav-2"><li class="u-nav-item"><a class="u-button-style u-nav-link" href="home" tr-tag="navbar.home">Home</a>
-              </li><li class="u-nav-item"><a class="u-button-style u-nav-link" href="support" tr-tag="navbar.support">Support</a>
-              </li></ul>
-            </div>
-          </div>
-          <div class="u-black u-menu-overlay u-opacity u-opacity-70"></div>
-        </div>
-      </nav>
-      </div></header>
-
-    <section class="u-align-center u-clearfix u-section-2" id="projects">
-      <div class="u-clearfix u-sheet u-sheet-1">
-        <h3 class="u-text u-text-1" tr-tag="projects">My projects:</h3>
-        <p class="u-text u-text-2"><span tr-tag="projects.desc">...will be here&nbsp;</span><span style="font-weight: 700;" tr-tag="projects.desc2"> soon</span>
+    <div class="u-sheet" id="projects">
+      <section class="projects-wrapper">
+        <h3 class="u-text" tr-tag="projects">My projects:</h3>
+        <p class="u-text"><span tr-tag="projects.desc">...will be here&nbsp;</span><span style="font-weight: 700;" tr-tag="projects.desc2"> soon</span>
         </p>
-      </div>
-    </section>
-    <section class="u-align-center u-clearfix u-palette-4-base u-section-3" id="links">
-      <div class="u-clearfix u-sheet u-sheet-1">
-        <h2 class="u-text u-text-1" tr-tag="links">check me out!<br>
+      </section>
+    </div>
+
+    <div class="u-sheet" id="links">
+      <section class="links-wrapper">
+        <h2 tr-tag="links">check me out!<br>
         </h2>
-        <div class="u-expanded-width u-list u-list-1">
-          <div class="u-repeater u-repeater-1">
-            <div class="u-container-style u-custom-item u-hover-feature u-list-item u-repeater-item u-list-item-1">
-              <div class="u-container-layout u-similar-container u-container-layout-1">
-                <div alt="" title="Discord" class="u-align-center-xs u-hover-feature u-image u-image-circle u-image-1" src="" data-image-width="256" data-image-height="256" data-href="https://discord.com/users/645877523481362432" data-target="_blank"></div>
-                <p class="u-align-center u-text u-text-2" tr-tag="links.discord">nml#7636<br>(you need to be in a mutual server w/ me)
-                </p>
-              </div>
-            </div>
-            <div class="u-container-style u-custom-item u-hover-feature u-list-item u-repeater-item u-list-item-2">
-              <div class="u-container-layout u-similar-container u-container-layout-2">
-                <div alt="" title="Youtube" class="u-align-center-xs u-hover-feature u-image u-image-circle u-image-2" src="" data-image-width="300" data-image-height="300" data-href="https://www.youtube.com/channel/UCfkIbtppBhoMmvxxJHZ--Rw" data-target="_blank"></div>
-                <p class="u-align-center u-text u-text-3" tr-tag="links.youtube">i sometimes post stuff here</p>
-              </div>
-            </div>
-            <div class="u-container-style u-custom-item u-hover-feature u-list-item u-repeater-item u-list-item-3">
-              <div class="u-container-layout u-similar-container u-container-layout-3">
-                <div alt="" title="Github" class="u-align-center-xs u-hover-feature u-image u-image-circle u-image-3" src="" data-image-width="300" data-image-height="300" data-href="https://github.com/thenml" data-target="_blank"></div>
-                <p class="u-align-center u-text u-text-4" tr-tag="links.github">my github account</p>
-              </div>
-            </div>
-            <div class="u-container-style u-custom-item u-hover-feature u-list-item u-repeater-item u-list-item-4">
-              <div class="u-container-layout u-similar-container u-container-layout-4">
-                <div alt="" title="NameMC" class="u-align-center-xs u-hover-feature u-image u-image-circle u-image-4" src="" data-image-width="300" data-image-height="300" data-href="https://namemc.com/profile/_nml" data-target="_blank"></div>
-                <p class="u-align-center u-text u-text-5" tr-tag="links.minecraft">minecraft username</p>
-              </div>
-            </div>
-            <div class="u-container-style u-custom-item u-hover-feature u-list-item u-repeater-item u-list-item-5">
-              <div class="u-container-layout u-similar-container u-container-layout-5">
-                <div alt="" title="GDBrowser" class="u-align-center-xs u-hover-feature u-image u-image-circle u-image-5" src="" data-image-width="300" data-image-height="300" data-href="https://gdbrowser.com/u/nmll" data-target="_blank"></div>
-                <p class="u-align-center u-text u-text-6" tr-tag="links.gdash"> check out my cool levels on geometry dash</p>
-              </div>
-            </div>
-            <div class="u-container-style u-custom-item u-hover-feature u-list-item u-repeater-item u-list-item-6">
-              <div class="u-container-layout u-similar-container u-container-layout-6">
-                <div alt="" title="tetr.io" class="u-align-center-xs u-hover-feature u-image u-image-circle u-image-contain u-image-6" src="" data-image-width="280" data-image-height="280" data-href="https://ch.tetr.io/u/nml" data-target="_blank"></div>
-                <p class="u-align-center u-text u-text-7" tr-tag="links.tetrio">i am decent at tetris</p>
-              </div>
-            </div>
+        <div class="link-objects">
+          <div class="link-obj">
+            <div alt="" title="Discord" class="image-circle link-image" style="background-image: url('../assets/images/discord.png');" data-href="https://discord.com/users/645877523481362432"></div>
+            <p tr-tag="links.discord">nml#7636<br>(you need to be in a mutual server w/ me)</p>
+          </div>
+          <div class="link-obj">
+            <div alt="" title="Youtube" class="image-circle link-image" style="background-image: url('../assets/images/youtube.png');" data-href="https://www.youtube.com/@nmll"></div>
+            <p tr-tag="links.youtube">i sometimes post stuff here</p>
+          </div>
+          <div class="link-obj">
+            <div alt="" title="Github" class="image-circle link-image" style="background-image: url('../assets/images/github.png');" data-href="https://github.com/thenml"></div>
+            <p tr-tag="links.github">my github account</p>
+          </div>
+          <div class="link-obj">
+            <div alt="" title="NameMC" class="image-circle link-image" style="background-image: url('../assets/images/minecraft.png');" data-href="https://namemc.com/profile/_nml"></div>
+            <p tr-tag="links.minecraft">minecraft username</p>
+          </div>
+          <div class="link-obj">
+            <div alt="" title="GDBrowser" class="link-image" style="background-image: url('../assets/images/gd.png');" data-href="https://gdbrowser.com/u/nmll"></div>
+            <p tr-tag="links.gdash"> check out my cool levels on geometry dash</p>
+          </div>
+          <div class="link-obj">
+            <div alt="" title="tetr.io" class="link-image" style="background-image: url('../assets/images/tetrio-color.png');" data-href="https://ch.tetr.io/u/nml"></div>
+            <p tr-tag="links.tetrio">i am decent at tetris</p>
           </div>
         </div>
+      </section>
+    </div>
+
+    <footer class="h-footer">
+      <div class="u-sheet">
+        -nml
       </div>
-    </section>
-    
-    
-    <footer class="u-align-center u-clearfix u-footer u-footer"><div class="u-clearfix u-sheet u-sheet-1">
-        <p class="u-small-text u-text u-text-variant u-text-1">-nml</p>
-      </div></footer>
+    </footer>
 </body></html>
