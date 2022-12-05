@@ -42,15 +42,6 @@ for(var i =0; i < allDom.length; i++){ // loop through all translatable emements
     if (translated) elem.innerHTML = translated;
 };
 
-[...document.querySelectorAll('a')].forEach(e=>{
-    //add window url params to to the href's params
-    if (e.href.includes("thenml.github.io/h/")){
-        const url = new URL(e.href);
-        url.searchParams.set("lang",selected_lang);
-        e.href = url.toString();
-    }
-})
-
 document.getElementById('langSelect').value = selected_lang;
 
 function langSelect(language) {
