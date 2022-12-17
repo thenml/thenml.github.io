@@ -232,6 +232,8 @@ var translations = {
         "this item is animated!":"этот предмет анимирован!",
         "Solve this riddle to craft...":"Реши эту загадку чтобы создать",
         " something?":" что-то?",
+        "Flying Ender Chest":"Эндер-сундук с крыльями",
+        "Right click to summon a temporary ender chest":"Использовать чтобы поставить временный эндер-сундук",
         //#endregion
         //#region mc Items
         "Stone":"Камень",
@@ -302,6 +304,9 @@ var translations = {
         "Seagrass":"Морская трава",
         "Glistering Melon Slice":"Сверкающий ломтик арбуза",
         "Golden Apple":"Золотое яблоко",
+        "Feather":"Перо",
+        "Phantom Membrane":"Мембрана фантома",
+        "Ender Chest":"Эндер-сундук",
         //#endregion
         //#region extra mc
         "Any Leaves":"Любые листья",
@@ -325,6 +330,7 @@ var translations = {
         "+60% Speed":"+60% Скорость",
         "+16 Max Health":"+16 Максимальное здоровье",
         "+1 Armor":"+1 Броня",
+        "Luck V":"Удача V",
         "No Effects":"Без эффектов",
         "Haste VIII (1:00)":"Спешка VIII (1:00)",
         "Bad Omen (10:00)":"Дурное знамение (10:00)",
