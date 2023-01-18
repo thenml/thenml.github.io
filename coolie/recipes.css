@@ -114,11 +114,11 @@
 }
 
 img.item-img {
-  content: url("../assets/images/48x.png");
+  content: url("/assets/images/48x.png");
 }
 .item-img {
   display:inline-block;
-  background-image: url("../assets/coolie/spritesheet.png");
+  background-image: url("/assets/coolie/spritesheet.png");
   background-size: 1000%;
 
   height:calc(96px / var(--size));
