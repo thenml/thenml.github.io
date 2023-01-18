@@ -23,3 +23,5 @@ setInterval(function(){
         update(rn);
     }
 },60000)
+
+var translations = {}
