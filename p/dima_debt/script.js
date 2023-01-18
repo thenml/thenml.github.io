@@ -10,7 +10,7 @@ function update(rn){
         debt *= 1.01;
     }
     debt = Math.round(debt*100) / 100
-
+    $('.ammount').empty()
     $('.ammount').append(
         `<h2>${debt} руб</h2>`
     )
