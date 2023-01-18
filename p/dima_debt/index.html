@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="styles.css" media="screen">
+    <link rel="stylesheet" href="/nicepage.css" media="screen">
+    <script class="u-script" type="text/javascript" src="/jquery.js" defer=""></script>
+    <script class="u-script" type="text/javascript" src="/translator.js" defer=""></script>
+    <script class="u-script" type="text/javascript" src="script.js" defer=""></script>
+
+    <link id="u-theme-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i">
+    
+    <title>Димин долг</title>
+</head>
+<body>
+  <header class="h-header">
+      <div class="u-sheet">
+        <div class="h-logo">
+          <img src="/assets/images/nml_logo.png" class="h-logo-image">
+        </div>
+        <nav class="h-social-icons">
+          <a class="h-social-icon" title="Discord" href="https://discord.com/users/645877523481362432"><img src="/assets/images/discord_auth.png" alt="">
+          </a>
+          <a class="h-social-icon" title="Github" href="https://github.com/thenml"><img src="/assets/images/github_auth.png" alt="">
+          </a>
+        </nav>
+        <div class="h-menu">
+          <ul class="h-menu-ul">
+            <li class="h-menu-item"><a href="/h/home" tr-tag="navbar.home">Home</a></li>
+            <li class="h-menu-item"><a href="/h/support" tr-tag="navbar.support">Support</a></li>
+          </ul>
+        </div>
+        <select class="h-lang-select" id="langSelect" onchange="langSelect(this.value);">
+          <option value="en">🇺🇸</option>
+          <option value="ru">🇷🇺</option>
+        </select>
+      </div>
+  </header>
+  <div class="debt">
+    <h1 class="title">мне Дима должен:</h1>
+    <div class="ammount rainbow">
+    </div>
+  </div>
+</body>
+</html>
