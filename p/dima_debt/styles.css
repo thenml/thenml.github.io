@@ -8,6 +8,9 @@ body {
     margin: auto;
     margin-top: 20%;
     padding: 5%;
+    padding-left: 50px;
+    padding-right: 50px;
+    min-width: fit-content;
     width: 70%;
     background-color: #000a;
     color: #fff;
@@ -40,7 +43,10 @@ body {
     margin: auto;
     margin-top: 20%;
     padding: 2%;
-    width: 30%;
+    padding-left: 50px;
+    padding-right: 50px;
+    min-width: fit-content;
+    max-width: 30%;
     background-color: #000a;
     color: #fff;
     text-align: center;
