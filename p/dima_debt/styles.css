@@ -7,8 +7,8 @@ body {
 .debt {
     margin: auto;
     margin-top: 20%;
-    width: 800px;
-    height: 400px;
+    padding: 5%;
+    width: 70%;
     background-color: #000a;
     color: #fff;
     text-align: center;
@@ -16,7 +16,6 @@ body {
     border-radius: 50px;
 }
 .debt .title{
-    padding-top: 10%;
     padding-bottom: 5%;
 }
 .debt .ammount{
@@ -32,7 +31,8 @@ body {
     margin-right: auto;
     margin-top: 10%;
     margin-bottom: 5%;
-
+    max-width: 410px;
+    width: 100%;
 }
 
 .rainbow{
