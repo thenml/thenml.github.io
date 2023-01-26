@@ -26,7 +26,7 @@ Date.prototype.toDateInputValue = (function() {
 
 update(new Date());
 
-setInterval(function(){
+var autoUpdate = setInterval(function(){
     rn = new Date();
     if(rn.getMinutes() === 0) {
         update(rn);
@@ -38,6 +38,7 @@ setInterval(function(){
 $('#date').val(new Date().toDateInputValue());
 $('#date').on('input', function(){
     update(new Date($('#date').val()));
+    clearInterval(autoUpdate);
 });
 
 
