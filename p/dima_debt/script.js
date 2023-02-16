@@ -1,8 +1,8 @@
 function update(rn){
-    var hours = Math.floor(Math.abs(rn.getTime() - 1674054000000) / 36e5);
-    var days = Math.floor(Math.abs(rn.getTime() - 1673035200000) / 864e5);
+    var hours = Math.floor(Math.abs(rn.getTime() - 1676552400000) / 36e5);
+    var days = Math.floor(Math.abs(rn.getTime() - 1676491200000) / 864e5);
 
-    debt = 400;
+    debt = 1191.69 - 400; // "выплата" 16.02 но я не принимаю >:)
     for (let i = 0; i < hours; i++) {
         debt *= 1.001;
     }
@@ -33,13 +33,6 @@ var autoUpdate = setInterval(function(){
         $('#date').val(rn.toDateInputValue());
     }
 },60000)
-
-
-$('#date').val(new Date().toDateInputValue());
-$('#date').on('input', function(){
-    update(new Date($('#date').val()));
-    clearInterval(autoUpdate);
-});
 
 
 var translations = {}
