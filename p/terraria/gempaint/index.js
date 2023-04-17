@@ -1,7 +1,7 @@
 let palette, image;
-let paletteInput, imageInput, imageWindow, canvas, ctx, gridCanvas, grid, gridSize,
+let paletteInput, imageInput, imageWindow, canvas, ctx, gridCanvas, gridctx, gridSize,
   textPos, textBlock, textPaint, imgBlock, imgPaint;
-let imageReady = false;
+let imageMode = 0;
 
 function applyPaletteToImage(canvas, palette) {
   const ctx = canvas.getContext('2d');
@@ -67,7 +67,7 @@ function gplToPalette(gplString) {
 function updateCanvas(imageData) {
   ctx.putImageData(imageData, 0, 0);
   imageWindow.setAttribute('style', `width:${4 * canvas.width}px;height:${4 * canvas.height}px`);
-  imageReady = true;
+  imageMode = 1;
   updateGrid();
   canvas.parentElement.parentElement.parentElement.classList.remove('hide');
   textPos.parentElement.classList.remove('hide');
@@ -76,7 +76,7 @@ function updateCanvas(imageData) {
 function updateGrid() {
   const scale = (parseInt(imageWindow.style.width) * 0.9) / canvas.width;
   if (scale < 3.6) {
-    grid.clearRect(0, 0, gridCanvas.width, gridCanvas.height);
+    gridctx.clearRect(0, 0, gridCanvas.width, gridCanvas.height);
     gridSize = 0;
     return;
   }
@@ -89,16 +89,16 @@ function updateGrid() {
   gridCanvas.height = canvas.height * spacing;
 
   for (let x = 0; x <= canvas.width * spacing; x += gridSize * spacing) {
-    grid.beginPath();
-    grid.moveTo(x + 0.5, 0);
-    grid.lineTo(x + 0.5, canvas.height * spacing);
-    grid.stroke();
+    gridctx.beginPath();
+    gridctx.moveTo(x + 0.5, 0);
+    gridctx.lineTo(x + 0.5, canvas.height * spacing);
+    gridctx.stroke();
   }
   for (let y = 0; y <= canvas.height * spacing; y += gridSize * spacing) {
-    grid.beginPath();
-    grid.moveTo(0, y + 0.5);
-    grid.lineTo(canvas.width * spacing, y + 0.5);
-    grid.stroke();
+    gridctx.beginPath();
+    gridctx.moveTo(0, y + 0.5);
+    gridctx.lineTo(canvas.width * spacing, y + 0.5);
+    gridctx.stroke();
   }
 }
 
@@ -128,6 +128,39 @@ function getObjectJSON(jsonObj, color) {
   }
 }
 
+
+function filterPixel(pixel) {
+  imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+  const a = pixel[3];
+  if (a != 255) {
+    imageMode = 1;
+    ctx.drawImage(image, 0, 0);
+    ctx.putImageData(applyPaletteToImage(canvas, palette), 0, 0);
+    return;
+  }
+  const opacity = imageMode == 1 ? 64 : 1;
+  imageMode = 2;
+
+  const r = pixel[0];
+  const g = pixel[1];
+  const b = pixel[2];
+  const pixels = imageData.data;
+
+  for (let i = 0; i < pixels.length; i += 4) {
+    if (pixels[i + 3] == 0)
+      pixels[i + 3] = 0;
+    else if (a < 255)
+      pixels[i + 3] = 255;
+    else if (r != pixels[i] || g != pixels[i + 1] || b != pixels[i + 2])
+      pixels[i + 3] = opacity;
+    else
+      pixels[i + 3] = 255;
+  }
+  ctx.putImageData(imageData, 0, 0);
+}
+
+
+
 document.addEventListener('DOMContentLoaded', () => {
   paletteInput = document.getElementById('palette-input');
   imageInput = document.getElementById('image-input');
@@ -135,7 +168,7 @@ document.addEventListener('DOMContentLoaded', () => {
   canvas = document.getElementById('canvas');
   ctx = canvas.getContext('2d');
   gridCanvas = document.getElementById('grid');
-  grid = gridCanvas.getContext('2d');
+  gridctx = gridCanvas.getContext('2d');
   imgBlock = document.createElement("span");
   imgPaint = document.createElement("span");
   imgBlock.classList = ["block"];
@@ -144,7 +177,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   [textPos, textBlock, textPaint] = document.getElementById('pixel-text').children;
 
-  grid.strokeStyle = "#000";    // Set the color of the grid lines
+  gridctx.strokeStyle = "#000";    // Set the color of the grid lines
 
   fetch('terraria_gemstone.gpl')
     .then(response => response.text())
@@ -196,21 +229,23 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   gridCanvas.addEventListener('mousemove', (event) => {
-    if (!imageReady) return
+    if (imageMode != 1) return
     const rect = canvas.getBoundingClientRect();
     const scale = canvas.width / (parseInt(imageWindow.style.width) * 0.9);
     const x = (event.clientX - rect.left) * scale;
     const y = (event.clientY - rect.top) * scale;
     const imageData = ctx.getImageData(x, y, 1, 1);
-    const data = imageData.data;
-    let hex = rgbToHex(data[0], data[1], data[2]);
-    if (data[3] == 0) hex = "00000000"
+    const pixel = imageData.data;
+    let hex = rgbToHex(pixel[0], pixel[1], pixel[2]);
+    if (pixel[3] == 0) hex = "00000000"
 
     textPos.innerText = `(${Math.floor(x)}, ${Math.floor(y)})`;
     block = getObjectJSON(blockJson, hex);
     paint = getObjectJSON(paintJson, hex);
     textBlock.innerText = block;
     textPaint.innerText = paint;
+    if (paint == undefined)
+      return textPaint.innerText = '#'+hex;
     if (block != 'none') {
       imgBlock.setAttribute('style', `--i:${blockList.indexOf(block)};width:24px;height:24px`);
       textBlock.prepend(imgBlock);
@@ -219,5 +254,17 @@ document.addEventListener('DOMContentLoaded', () => {
       imgPaint.setAttribute('style', `--i:${paintList.indexOf(paint)};width:22px;height:20px`);
       textPaint.prepend(imgPaint);
     }
+  });
+
+  gridCanvas.addEventListener('click', (event) => {
+    if (!imageMode) return;
+    const rect = canvas.getBoundingClientRect();
+    const scale = canvas.width / (parseInt(imageWindow.style.width) * 0.9);
+    const x = (event.clientX - rect.left) * scale;
+    const y = (event.clientY - rect.top) * scale;
+    const imageData = ctx.getImageData(x, y, 1, 1);
+    const pixel = imageData.data;
+
+    filterPixel(pixel);
   });
 });
