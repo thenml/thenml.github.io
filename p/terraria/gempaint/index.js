@@ -128,6 +128,35 @@ function getObjectJSON(jsonObj, color) {
   }
 }
 
+function invertRGB(pixel) {
+  return [255 - pixel[0], 255 - pixel[1], 255 - pixel[2], pixel[3]];
+}
+
+
+function updatePixelText(pixel, x, y) {
+  if (invertRGB(pixel).toString() == lastSelectedPixel[0].toString()) pixel = invertRGB(pixel);
+  let hex = rgbToHex(pixel[0], pixel[1], pixel[2]);
+  if (pixel[3] == 0) hex = "00000000"
+
+  textPos.innerText = `(${Math.floor(x)}, ${Math.floor(y)})`;
+  block = getObjectJSON(blockJson, hex);
+  paint = getObjectJSON(paintJson, hex);
+  textBlock.innerText = block;
+  textPaint.innerText = paint;
+  if (paint == undefined){
+    console.log(pixel)
+    return textPaint.innerText = '#'+hex;
+  }
+  if (block != 'none') {
+    imgBlock.setAttribute('style', `--i:${blockList.indexOf(block)};width:24px;height:24px`);
+    textBlock.prepend(imgBlock);
+  }
+  if (paint != 'none') {
+    imgPaint.setAttribute('style', `--i:${paintList.indexOf(paint)};width:22px;height:20px`);
+    textPaint.prepend(imgPaint);
+  }
+}
+
 
 function selectPixel(pixel) {
   imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
@@ -138,7 +167,6 @@ function selectPixel(pixel) {
     imageMode = 1;
     return;
   }
-  imageMode = 2;
   
   const r = pixel[0];
   const g = pixel[1];
@@ -147,6 +175,7 @@ function selectPixel(pixel) {
 
   if (pixel.toString() == lastSelectedPixel[0].toString()){
     lastSelectedPixel = [[r, g, b, a], lastSelectedPixel[1] +1];
+    imageMode = 3;
     const opacity = 256 - lastSelectedPixel[1] * 64;
     for (let i = 0; i < pixels.length; i += 4) {
       if (pixels[i + 3] == 0)
@@ -166,6 +195,7 @@ function selectPixel(pixel) {
     }
     for (let i = 0; i < pixels.length; i += 4) {
       lastSelectedPixel = [[r, g, b, a], 0];
+      imageMode = 2;
       if (r == pixels[i] && g == pixels[i + 1] && b == pixels[i + 2] && a == pixels[i + 3]){
         pixels[i]   = 255 -r;
         pixels[i+1] = 255 -g;
@@ -247,31 +277,15 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   gridCanvas.addEventListener('mousemove', (event) => {
-    if (imageMode != 1) return
+    if (!(3 > imageMode > 0)) return // when changing the alpha values it also changes the rgb values for some reason
     const rect = canvas.getBoundingClientRect();
     const scale = canvas.width / (parseInt(imageWindow.style.width) * 0.9);
     const x = (event.clientX - rect.left) * scale;
     const y = (event.clientY - rect.top) * scale;
     const imageData = ctx.getImageData(x, y, 1, 1);
     const pixel = imageData.data;
-    let hex = rgbToHex(pixel[0], pixel[1], pixel[2]);
-    if (pixel[3] == 0) hex = "00000000"
 
-    textPos.innerText = `(${Math.floor(x)}, ${Math.floor(y)})`;
-    block = getObjectJSON(blockJson, hex);
-    paint = getObjectJSON(paintJson, hex);
-    textBlock.innerText = block;
-    textPaint.innerText = paint;
-    if (paint == undefined)
-      return textPaint.innerText = '#'+hex;
-    if (block != 'none') {
-      imgBlock.setAttribute('style', `--i:${blockList.indexOf(block)};width:24px;height:24px`);
-      textBlock.prepend(imgBlock);
-    }
-    if (paint != 'none') {
-      imgPaint.setAttribute('style', `--i:${paintList.indexOf(paint)};width:22px;height:20px`);
-      textPaint.prepend(imgPaint);
-    }
+    updatePixelText(pixel, x, y);
   });
 
   gridCanvas.addEventListener('click', (event) => {
@@ -287,6 +301,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const imageData = ctx.getImageData(x, y, 1, 1);
     const pixel = imageData.data;
 
+    updatePixelText(pixel, x, y);
     selectPixel(pixel);
   });
 });
