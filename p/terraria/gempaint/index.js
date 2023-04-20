@@ -1,4 +1,4 @@
-let palette, image;
+let palette, image, lastSelectedPixel = [[], -1];
 let paletteInput, imageInput, imageWindow, canvas, ctx, gridCanvas, gridctx, gridSize,
   textPos, textBlock, textPaint, imgBlock, imgPaint;
 let imageMode = 0;
@@ -129,32 +129,50 @@ function getObjectJSON(jsonObj, color) {
 }
 
 
-function filterPixel(pixel) {
+function selectPixel(pixel) {
   imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
   const a = pixel[3];
-  if (a != 255) {
+
+  if (a != 255 || lastSelectedPixel[1] > 3) {
+    lastSelectedPixel = [[],-1];
     imageMode = 1;
-    ctx.drawImage(image, 0, 0);
-    ctx.putImageData(applyPaletteToImage(canvas, palette), 0, 0);
     return;
   }
-  const opacity = imageMode == 1 ? 64 : 1;
   imageMode = 2;
-
+  
   const r = pixel[0];
   const g = pixel[1];
   const b = pixel[2];
   const pixels = imageData.data;
 
-  for (let i = 0; i < pixels.length; i += 4) {
-    if (pixels[i + 3] == 0)
-      pixels[i + 3] = 0;
-    else if (a < 255)
-      pixels[i + 3] = 255;
-    else if (r != pixels[i] || g != pixels[i + 1] || b != pixels[i + 2])
-      pixels[i + 3] = opacity;
-    else
-      pixels[i + 3] = 255;
+  if (pixel.toString() == lastSelectedPixel[0].toString()){
+    lastSelectedPixel = [[r, g, b, a], lastSelectedPixel[1] +1];
+    const opacity = 256 - lastSelectedPixel[1] * 64;
+    for (let i = 0; i < pixels.length; i += 4) {
+      if (pixels[i + 3] == 0)
+        pixels[i + 3] = 0;
+      else if (a < 255)
+        pixels[i + 3] = 255;
+      else if (r != pixels[i] || g != pixels[i + 1] || b != pixels[i + 2])
+        pixels[i + 3] = opacity;
+      else
+        pixels[i + 3] = 255;
+    }
+  } else {
+    if (lastSelectedPixel[1] > 0) {
+      lastSelectedPixel = [[],-1];
+      imageMode = 1;
+      return;
+    }
+    for (let i = 0; i < pixels.length; i += 4) {
+      lastSelectedPixel = [[r, g, b, a], 0];
+      if (r == pixels[i] && g == pixels[i + 1] && b == pixels[i + 2] && a == pixels[i + 3]){
+        pixels[i]   = 255 -r;
+        pixels[i+1] = 255 -g;
+        pixels[i+2] = 255 -b;
+        pixels[i+3] = 255;
+      }
+    }
   }
   ctx.putImageData(imageData, 0, 0);
 }
@@ -262,9 +280,13 @@ document.addEventListener('DOMContentLoaded', () => {
     const scale = canvas.width / (parseInt(imageWindow.style.width) * 0.9);
     const x = (event.clientX - rect.left) * scale;
     const y = (event.clientY - rect.top) * scale;
+
+    ctx.drawImage(image, 0, 0);
+    ctx.putImageData(applyPaletteToImage(canvas, palette), 0, 0);
+
     const imageData = ctx.getImageData(x, y, 1, 1);
     const pixel = imageData.data;
 
-    filterPixel(pixel);
+    selectPixel(pixel);
   });
 });
