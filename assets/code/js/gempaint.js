@@ -69,7 +69,8 @@ function gplToPalette(gplString) {
 
 function updateCanvas(imageData) {
   ctx.putImageData(imageData, 0, 0);
-  imageWindow.setAttribute('style', `width:${4 * canvas.width}px;height:${4 * canvas.height}px`);
+  const width = Math.max(canvas.width, canvas.height)
+  imageWindow.setAttribute('style', `width:${4 * width}px;height:${4 * width}px`);
 
   const containerBox = container.getBoundingClientRect();
   const newX = (containerBox.right - containerBox.left - 4 * canvas.width) / 2;
@@ -325,8 +326,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     imageWindow.style.left = Math.min(Math.max(newX, 4 * minX), maxX) + 'px';
     imageWindow.style.top = Math.min(Math.max(newY, 4 * minY), maxY) + 'px';
-
-    console.log([newX, minX, maxX, newY, minY, maxY])
 
     if ((Math.abs(newX) + Math.abs(newY)) > 1) isDragging = 2;
   });

@@ -127,12 +127,12 @@ header {
 }
 
 .info .block {
-    background-image: url("/assets/terraria/blocks.png");
+    background-image: url("/assets/gempaint/blocks.png");
     background-position: 0 calc(var(--i) * -24px);
 }
 
 .info .paint {
-    background-image: url("/assets/terraria/paint.png");
+    background-image: url("/assets/gempaint/paint.png");
     background-position: 0 calc(var(--i) * -20px);
 }
 
