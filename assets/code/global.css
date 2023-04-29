@@ -21,7 +21,6 @@ body:has(main.body-wrapper){
 }
 main.body-wrapper {
     width: 80%;
-    height: max(100%, 100vh);
     margin: auto;
     grid-area: main;
     text-align: center;
