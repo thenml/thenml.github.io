@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+
+	<link rel="stylesheet" href="/assets/code/global.css" media="screen">
+	<link rel="stylesheet" type="text/css" href="/assets/code/css/gempaint.css" media="screen">
+	<script type="text/javascript" src="/assets/code/js/gempaint.js"></script>
+
+	<title>nml | Terraria Gemspark Pixelart</title>
+</head>
+
+<body>
+	<main>
+		<header>
+			<input class="button input" type="file" id="palette-input" style="display: none;">
+			<input class="button input" type="file" id="image-input">
+		</header>
+		<div class="container" id="container">
+			<div class="scroll hide">
+				<div class="window" id="image-window">
+					<div>
+						<canvas id="canvas"></canvas>
+						<canvas id="grid"></canvas>
+					</div>
+				</div>
+			</div>
+			<span class="window info hide" id="pixel-text">
+				<div class="text"></div>
+				<div class="text"></div>
+				<div class="text"></div>
+			</span>
+		</div>
+		<div class="background"></div>
+	</main>
+</body>
+
+</html>

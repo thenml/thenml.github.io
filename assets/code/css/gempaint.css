@@ -1,0 +1,161 @@
+body {
+    font-size: 22px;
+}
+
+main {
+    height: 100vh;
+    overflow: hidden;
+}
+
+.background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: linear-gradient(-60deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+    background-size: 600vw 600vw;
+    animation: gradient 40s ease infinite;
+
+    mask-image: url('/assets/gempaint/bg-mask.png');
+    z-index: -1;
+}
+
+/* 1270 */
+.container {
+    margin-left: 50px;
+    margin-top: 80px;
+    display: flex;
+    align-items: center;
+    width: 70%;
+    height: 90%;
+    border-radius: 30px;
+    overflow: hidden;
+}
+
+.scroll {
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+}
+
+.window {
+    display: inline-block;
+    position: relative;
+    width: fit-content;
+    padding: 30px;
+    border-radius: 15px;
+    background-color: #fff2;
+}
+
+.logo-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10%;
+}
+
+.logo-container image {
+    width: 20%;
+    max-width: 200px;
+}
+
+header {
+    display: flex;
+    position: absolute;
+    top: 0px;
+    left: calc(50% - 115px);
+    margin-top: 20px;
+}
+
+.button {
+    margin: auto;
+    border: 0px;
+    padding: 15px;
+    display: inline-block;
+    background-color: #fffd;
+    color: #000;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+.button::after {
+    cursor: pointer;
+}
+
+.input {
+    margin-right: 50px;
+}
+
+.window div {
+    margin: 0;
+    padding: 0;
+    position: relative;
+    width: 90%;
+}
+
+.window canvas {
+    margin: 5%;
+    width: 100%;
+    image-rendering: pixelated;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+#grid {
+    pointer-events: none;
+}
+
+
+.info {
+    position: absolute;
+    top: calc(50vh - 40px);
+    right: 0px;
+    float: left;
+    width: 18%;
+    height: 80px;
+    padding: 10px;
+    margin: 20px;
+}
+
+.info div span {
+    display: inline-block;
+    background-repeat: no-repeat;
+    position: relative;
+    top: 4px;
+    padding-right: 20px;
+}
+
+.info .block {
+    background-image: url("/assets/terraria/blocks.png");
+    background-position: 0 calc(var(--i) * -24px);
+}
+
+.info .paint {
+    background-image: url("/assets/terraria/paint.png");
+    background-position: 0 calc(var(--i) * -20px);
+}
+
+.text {
+    margin: 20px 60px;
+}
+
+
+.hide {
+    display: none;
+}
+
+
+@keyframes gradient {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}

@@ -1,0 +1,42 @@
+@import url('https://fonts.googleapis.com/css?family=Rubik&display=swap');
+
+html,
+body {
+    height: 100%;
+    margin: 0;
+}
+
+body {
+    font-family: Rubik;
+    color: white;
+    background-color: #404040;
+}
+body:has(main.body-wrapper){
+    position: relative;
+    display: grid;
+    grid-gap: 0;
+    grid-template-columns: 1fr;
+    grid-template-areas: "main" "footer";
+    grid-template-rows: 1fr 80px;
+}
+main.body-wrapper {
+    width: 80%;
+    height: max(100%, 100vh);
+    margin: auto;
+    grid-area: main;
+    text-align: center;
+    background-color: #242631;
+}
+
+header img.logo {
+    width: 150px;
+    margin: 24px auto 0;
+    box-sizing: border-box;
+}
+
+footer {
+    margin-top: 200px;
+    width: 100%;
+    background-color: #181a22;
+}
+

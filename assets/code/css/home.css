@@ -1,0 +1,272 @@
+.section-title {
+    margin-top: 50px;
+    background-image: linear-gradient(to right, #ff6961, #fdfd96);
+    background-clip: text;
+    color: transparent;
+    animation: rainbow 30s linear infinite;
+}
+
+@keyframes rainbow {
+    0% {
+        -webkit-filter: hue-rotate(0deg);
+    }
+
+    100% {
+        -webkit-filter: hue-rotate(360deg);
+    }
+}
+
+
+.cards {
+    display: flex;
+    width: 80%;
+    height: fit-content;
+    margin: 5% auto;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.card-wrapper {
+    flex: 0 0;
+    margin: 2% auto;
+    min-width: 300px;
+    width: 100%;
+    aspect-ratio: 1;
+}
+
+.card {
+    display: block;
+    width: 100%;
+    height: 100%;
+    color: #fff;
+    background-color: #181a22;
+    transform-style: preserve-3d;
+    transform: perspective(3000px) rotateY(calc(var(--rotateX) * 1deg)) rotateX(calc(var(--rotateY) * 1deg));
+
+    transition-duration: 1s;
+    border-radius: 10%;
+    overflow: hidden;
+}
+.card:hover {
+    transition-duration: 0ms;
+    background-color: rgb(58, 60, 68);
+    box-shadow: 5px 5px 2px rgba(180, 180, 180, 0.5);
+}
+
+.card:hover .mark {
+    opacity: 1;
+}
+
+.card:hover .pattern {
+    opacity: 1;
+}
+
+.card .mark,
+.card img.logo,
+.card .title,
+.card .desc {
+    transition-duration: 300ms;
+    transform: translateX(calc(var(--rotateX) * 0.5px)) translateY(calc(var(--rotateY) * -0.5px));
+}
+
+.card:hover .mark,
+.card:hover img.logo,
+.card:hover .title,
+.card:hover .desc {
+    transition-duration: 0ms;
+}
+
+.card .mark {
+    position: fixed;
+    top: 12px;
+    left: 12px;
+    width: 40px;
+    height: 40px;
+    padding: 4px;
+    object-fit: cover;
+    opacity: 0;
+
+    border-radius: 100%;
+    background-color: rgba(48, 48, 48, 0.89);
+}
+
+.card img.banner {
+    display: flex;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: calc(50% - 4px);
+    width: 100%;
+    border-bottom: 4px var(--color) solid;
+    object-fit: cover;
+}
+
+.card img.logo {
+    position: fixed;
+    top: calc(50% - 22px);
+    left: 15px;
+    width: 64px;
+    height: 64px;
+    object-fit: cover;
+    z-index: 2;
+
+    border: 6px #303030;
+    border-style: solid;
+    border-radius: 20%;
+    background-color: rgb(48, 48, 48);
+}
+
+.card .title {
+    display: flex;
+    position: fixed;
+    top: 50%;
+    font-size: 20px;
+    margin: 5px 15px 0 100px;
+    text-align: right;
+    word-wrap: break-word;
+    z-index: 1;
+    line-height: 1em;
+    max-height: 2em;
+}
+
+.card .desc {
+    position: fixed;
+    top: 65%;
+    left: 0;
+    margin: 15px 15px 0 15px;
+
+}
+
+/* 183 */
+.card .pattern {
+    display: block;
+    position: fixed;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    height: 50%;
+    transition-duration: 1s;
+    opacity: 0;
+    z-index: -1;
+    background-size: 40px;
+    animation: patternScroll 5s infinite linear;
+}
+
+@keyframes patternScroll {
+    0% {
+        background-position: 0px 0px
+    }
+
+    100% {
+        background-position: 80px 40px
+    }
+}
+
+
+
+.contacts {
+    display: flex;
+    max-width: fit-content;
+    justify-content: space-between;
+    margin: auto;
+    flex-wrap: nowrap;
+}
+
+.tab {
+    display: flex;
+    width: 60px;
+    height: 60px;
+    margin: 5px;
+    border: none;
+    border-radius: 30px;
+    background-color: #181a22;
+    transition-duration: 300ms;
+    color: inherit;
+    font: inherit;
+    text-align: right;
+    text-decoration: none;
+    align-items: center;
+    overflow: hidden;
+}
+
+.tab:hover {
+    width: 300px;
+}
+
+.tab:hover img {
+    filter: none !important;
+}
+
+.tab:hover span {
+    opacity: 1;
+}
+
+.tab img {
+    width: 40px;
+    height: 40px;
+    margin: 10px;
+    transition-duration: 300ms;
+    object-fit: contain;
+    filter: brightness(1) grayscale(1);
+}
+
+.tab span {
+    opacity: 0;
+    line-height: 1em;
+    height: 2.15em;
+    width: 100%;
+    margin: 0px 10px;
+    transition-duration: 300ms;
+    text-overflow: clip;
+    overflow: hidden;
+}
+
+
+
+
+
+
+
+
+@keyframes cubes {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes cubes-init {
+    0% {
+        transform: translateY(500px) rotate(-180deg);
+    }
+
+    100% {
+        transform: translateY(0px) rotate(0deg);
+    }
+}
+
+.background {
+    position: fixed;
+    width: 100vw;
+    height: 110vh;
+    top: 0;
+    left: 0;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    margin-top: 0px;
+    z-index: -2;
+}
+
+.background li {
+    position: absolute;
+    display: block;
+    list-style: none;
+    width: 20px;
+    height: 20px;
+    background: rgba(255, 255, 255, 0.2);
+    animation: cubes-init 1s ease-out;
+}
