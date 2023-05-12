@@ -1,0 +1,171 @@
+/*
+    half of this is mine, and other is probably taken from Vencord's discord server #css-snippets channel
+    https://discord.com/channels/1015060230222131221/1028106818368589824
+*/
+
+
+/* remove bloated buttons */
+.nav-1cHpYc div {
+    display: none;
+}
+[aria-label='Add Super Reaction'] {
+    display: none;
+}
+.wrapper-2vIMkT [aria-label='Create Thread'] {
+    display: none;
+}
+.wrapper-2vIMkT [aria-label='Mark Unread'] {
+    display: none;
+}
+.wrapper-2vIMkT [aria-label='Copy Link'] {
+    display: none;
+}
+.wrapper-2vIMkT [aria-label='Pin Message'] {
+    display: none;
+}
+
+
+
+/*Remove Invite Button next to channel name*/
+.actionIcon-2sw4Sl {
+    display: none;
+}
+
+/* split messagebars */
+@import url(https://minidiscordthemes.github.io/Snippets/SplitMessageBars/SplitMessageBars.css);
+.contentWrapper-2f9yME {
+    padding-top: 0px;
+    grid-template-rows: 0px, auto;
+}
+
+/* timestamp only on hover */
+[class*=timestampInline-] {
+    opacity: 0;
+    transition: 0.2s opacity ease-in-out;
+}
+
+[class^=message-]:hover [class*=timestampInline-] {
+    opacity: 1;
+}
+
+
+/*search bar minimized until hover*/
+:root {
+    --transitionspeed: 0.25s;
+}
+
+.search-2Mwzzq:not(.open-1F8u2c) .searchBar-jGtisZ {
+    width: 27px;
+    transition: var(--transitionspeed);
+    background-color: transparent;
+}
+
+.search-2Mwzzq:not(.open-1F8u2c):hover .searchBar-jGtisZ {
+    width: 170px;
+    background-color: var(--background-tertiary);
+}
+
+.search-2Mwzzq:not(.open-1F8u2c) .iconContainer-1RqWJj {
+    transform: scale(1.3);
+    transition: var(--transitionspeed);
+}
+
+.search-2Mwzzq:not(.open-1F8u2c):hover .iconContainer-1RqWJj {
+    transform: scale(1);
+}
+
+.search-2Mwzzq:not(.open-1F8u2c) .icon-18rqoe {
+    color: var(--text-normal);
+}
+
+.search-2Mwzzq:not(.open-1F8u2c):hover .icon-18rqoe {
+    color: var(--text-muted);
+}
+
+
+/* commence trolling */
+.content-1SgpWY:has([aria-label='киберспорт классик (server)']) .container-2o3qEW img[src='https://cdn.discordapp.com/avatars/645877523481362432/4c6407c84927dab91ae8e33eda5a87bf.webp?size=32']{
+    content: url('https://discord.com/assets/6f26ddd1bf59740c536d2274bb834a05.png?size=512');
+}
+
+
+/* less intrusive activities buttons */
+[class^="dot-SviNJC"] {
+    display: none;
+}
+
+[class^="sparkles-2G5lq5"] {
+    display: none;
+}
+
+[class^="container-1jQZ2U"] {
+    display: none;
+}
+
+
+/* remove buttons next to send */
+[class^=channelTextArea-] [class^=buttons-]>:nth-child(2) {
+    display: none;
+}
+[class^=channelTextArea-] [class^=buttons-]>:is(button:first-child,
+    div:has([class^=sticker])) {
+    display: none;
+}
+
+
+/* rainbow mentions */
+.theme-dark .mentioned-Tre-dv .mention,
+.theme-dark .wrapper-1ZcZW- {
+    transition-duration: 500ms;
+    background: #0000002A !important;
+}
+
+.theme-dark .mentioned-Tre-dv .mention,
+.theme-dark .wrapper-1ZcZW-:hover {
+    transition-duration: 500ms;
+    background: #00000014 !important;
+}
+
+.theme-dark .mentioned-Tre-dv .mention,
+.theme-dark .mention,
+.theme-dark [class*="messageListItem"] .username-u-ebrn,
+.theme-dark [class*="repliedMessage"] .desaturateUserColors-1O-G89 {
+    /* :3 */
+    animation: rainbowmention 1.1s infinite ease-in-out alternate-reverse;
+    font-weight: bold;
+}
+
+.theme-dark [class*="messageListItem"] .content-vSHmMD {
+    color: var(--text-normal);
+}
+
+@keyframes rainbowmention {
+    from {
+        -webkit-filter: hue-rotate(-40deg);
+    }
+
+    to {
+        -webkit-filter: hue-rotate(40deg);
+    }
+}
+
+
+/* hide voice control buttons until hover */
+[class^=sidebar-] [class^=panels-] [class^=container-]>[class^=avatarWrapper-] {
+    flex: 1;
+}
+
+[class^=sidebar-] [class^=panels-]:hover [class^=container-]>[class*=flex-][class*=horizontal-] {
+    background-color: var(--background-primary);
+    box-shadow: var(--elevation-stroke), var(--elevation-medium);
+}
+
+[class^=sidebar-] [class^=panels-] [class^=container-]>[class*=flex-][class*=horizontal-] button:not(:last-child) {
+    height: 0;
+    overflow: hidden;
+    transition: height .22s ease;
+}
+
+[class^=sidebar-] [class^=panels-]:hover [class^=container-]>[class*=flex-][class*=horizontal-] button {
+    height: 16px;
+}
