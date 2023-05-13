@@ -1,7 +1,21 @@
 /*
     half of this is mine, and other is probably taken from Vencord's discord server #css-snippets channel
     https://discord.com/channels/1015060230222131221/1028106818368589824
+    i will try to find and add mising credit
 */
+
+
+/* https://canary.discord.com/channels/1015060230222131221/1028106818368589824/1106820344142102528 */
+/* Hides the Billing Settings stuff from discord settings */
+.header-2F5_LB:has(+ .premiumTab-39eQzY) /* Payment Settings */,
+.premiumTab-39eQzY /* Nitro */,
+.premiumTab-39eQzY + .item-2GWPIy /* Server Boost */,
+.premiumTab-39eQzY + .item-2GWPIy + .item-2GWPIy /* Subscriptions */,
+.premiumTab-39eQzY + .item-2GWPIy + .item-2GWPIy + .item-2GWPIy /* Gift Inventory */,
+.premiumTab-39eQzY + .item-2GWPIy + .item-2GWPIy + .item-2GWPIy + .item-2GWPIy /* Billing */,
+.premiumTab-39eQzY + .item-2GWPIy + .item-2GWPIy + .item-2GWPIy + .item-2GWPIy + .separator-2N511j  /* Divider */ {
+  	display: none;
+}
 
 
 /* remove bloated buttons */
