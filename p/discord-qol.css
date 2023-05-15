@@ -1,11 +1,19 @@
 /*
-    half of this is mine, and other is probably taken from Vencord's discord server #css-snippets channel
+    half of this is mine, and other is taken from Vencord's discord server #css-snippets channel
     https://discord.com/channels/1015060230222131221/1028106818368589824
-    i will try to find and add mising credit
 */
 
 
-/* https://canary.discord.com/channels/1015060230222131221/1028106818368589824/1106820344142102528 */
+/* https://discord.com/channels/1015060230222131221/1028106818368589824/1107545078081261588 */
+/* HideAKA */
+@import url(https://minidiscordthemes.github.io/Snippets/HideAKA/HideAKA-badge.css);
+.userPopoutOuter-1OHwPL :is(.container-3g15px,.usernameSection-3FppkT):active .container-mAkQVR{
+    top:-53px;
+}
+
+
+
+/* https://discord.com/channels/1015060230222131221/1028106818368589824/1106820344142102528 */
 /* Hides the Billing Settings stuff from discord settings */
 .header-2F5_LB:has(+ .premiumTab-39eQzY) /* Payment Settings */,
 .premiumTab-39eQzY /* Nitro */,
@@ -18,7 +26,8 @@
 }
 
 
-/* remove bloated buttons */
+
+/* remove bloated buttons || en-US only */
 .nav-1cHpYc div {
     display: none;
 }
@@ -40,11 +49,15 @@
 
 
 
+/* https://discord.com/channels/1015060230222131221/1028106818368589824/1088264800997474354 */
 /*Remove Invite Button next to channel name*/
 .actionIcon-2sw4Sl {
     display: none;
 }
 
+
+
+/* https://discord.com/channels/1015060230222131221/1028106818368589824/1102410299795054662 */
 /* split messagebars */
 @import url(https://minidiscordthemes.github.io/Snippets/SplitMessageBars/SplitMessageBars.css);
 .contentWrapper-2f9yME {
@@ -52,6 +65,9 @@
     grid-template-rows: 0px, auto;
 }
 
+
+
+/* https://discord.com/channels/1015060230222131221/1028106818368589824/1092155597211836547 */
 /* timestamp only on hover */
 [class*=timestampInline-] {
     opacity: 0;
@@ -63,6 +79,8 @@
 }
 
 
+
+/* https://discord.com/channels/1015060230222131221/1028106818368589824/1095648542892228618 */
 /*search bar minimized until hover*/
 :root {
     --transitionspeed: 0.25s;
@@ -96,25 +114,20 @@
     color: var(--text-muted);
 }
 
-
-/* commence trolling */
-.content-1SgpWY:has([aria-label='киберспорт классик (server)']) .container-2o3qEW img[src='https://cdn.discordapp.com/avatars/645877523481362432/4c6407c84927dab91ae8e33eda5a87bf.webp?size=32']{
+body:has([aria-label='киберспорт классик (server)']) img[src^='https://cdn.discordapp.com/avatars/645877523481362432/4c6407c84927dab91ae8e33eda5a87bf.webp'] { /* commence trolling */
     content: url('https://discord.com/assets/6f26ddd1bf59740c536d2274bb834a05.png?size=512');
 }
 
 
+
+/* https://discord.com/channels/1015060230222131221/1028106818368589824/1100506749829648395 */
 /* less intrusive activities buttons */
-[class^="dot-SviNJC"] {
-    display: none;
-}
-
-[class^="sparkles-2G5lq5"] {
-    display: none;
-}
-
+[class^="dot-SviNJC"],
+[class^="sparkles-2G5lq5"],
 [class^="container-1jQZ2U"] {
     display: none;
 }
+
 
 
 /* remove buttons next to send */
@@ -127,7 +140,9 @@
 }
 
 
-/* rainbow mentions */
+
+/* https://discord.com/channels/1015060230222131221/1028106818368589824/1099445285798826086 */
+/* rainbow mentions (edited) */
 .theme-dark .mentioned-Tre-dv .mention,
 .theme-dark .wrapper-1ZcZW- {
     transition-duration: 500ms;
@@ -164,7 +179,9 @@
 }
 
 
-/* hide voice control buttons until hover */
+
+/* https://discord.com/channels/1015060230222131221/1028106818368589824/1097861825376309428 */
+/* hide voice control buttons until hover (edited) */
 [class^=sidebar-] [class^=panels-] [class^=container-]>[class^=avatarWrapper-] {
     flex: 1;
 }
