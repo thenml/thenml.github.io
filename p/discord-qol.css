@@ -4,6 +4,15 @@
 */
 
 
+
+/* https://discord.com/channels/1015060230222131221/1028106818368589824/1109015718441275442 */
+/* transparent user popout (works great with colors) */
+[class^=userPopoutOverlayBackground] {
+    background: transparent;
+}
+
+
+
 /* https://discord.com/channels/1015060230222131221/1028106818368589824/1107545078081261588 */
 /* HideAKA */
 @import url(https://minidiscordthemes.github.io/Snippets/HideAKA/HideAKA-badge.css);
@@ -112,10 +121,6 @@
 
 .search-2Mwzzq:not(.open-1F8u2c):hover .icon-18rqoe {
     color: var(--text-muted);
-}
-
-body:has([aria-label='киберспорт классик (server)']) img[src^='https://cdn.discordapp.com/avatars/645877523481362432/4c6407c84927dab91ae8e33eda5a87bf.webp'] { /* commence trolling */
-    content: url('https://discord.com/assets/6f26ddd1bf59740c536d2274bb834a05.png?size=512');
 }
 
 
