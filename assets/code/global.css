@@ -11,14 +11,6 @@ body {
     color: white;
     background-color: #404040;
 }
-body:has(main.body-wrapper){
-    position: relative;
-    display: grid;
-    grid-gap: 0;
-    grid-template-columns: 1fr;
-    grid-template-areas: "main" "footer";
-    grid-template-rows: 1fr 80px;
-}
 main.body-wrapper {
     width: 80%;
     margin: auto;
