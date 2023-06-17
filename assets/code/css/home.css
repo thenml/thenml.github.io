@@ -2,6 +2,7 @@
     margin-top: 50px;
     background-image: linear-gradient(to right, #ff6961, #fdfd96);
     background-clip: text;
+    -webkit-background-clip: text;
     color: transparent;
     animation: rainbow 30s linear infinite;
 }
@@ -52,6 +53,10 @@
     background-color: rgb(58, 60, 68);
     box-shadow: 5px 5px 2px rgba(180, 180, 180, 0.5);
 }
+.card.disabled {
+    filter: brightness(0.8);
+    -webkit-filter: brightness(0.8);
+}
 
 .card:hover .mark {
     opacity: 1;
@@ -90,7 +95,7 @@
     background-color: rgba(48, 48, 48, 0.89);
 }
 
-.card img.banner {
+.card .banner {
     display: flex;
     position: fixed;
     top: 0;
@@ -190,7 +195,7 @@
 }
 
 .tab:hover {
-    width: 300px;
+    width: 120px;
 }
 
 .tab:hover img {
@@ -211,14 +216,7 @@
 }
 
 .tab span {
-    opacity: 0;
-    line-height: 1em;
-    height: 2.15em;
-    width: 100%;
-    margin: 0px 10px;
     transition-duration: 300ms;
-    text-overflow: clip;
-    overflow: hidden;
 }
 
 

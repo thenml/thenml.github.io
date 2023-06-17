@@ -13,6 +13,7 @@ body {
 }
 main.body-wrapper {
     width: 80%;
+    height: 100%;
     margin: auto;
     grid-area: main;
     text-align: center;
@@ -24,10 +25,10 @@ header img.logo {
     margin: 24px auto 0;
     box-sizing: border-box;
 }
-
-footer {
-    margin-top: 200px;
-    width: 100%;
+main.body-wrapper > footer {
+    position: absolute;
+    bottom: 0;
+    width: 80%;
     background-color: #181a22;
 }
 
