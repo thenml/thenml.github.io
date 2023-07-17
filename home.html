@@ -8,11 +8,11 @@
 	<title>nml | Home</title>
 	<meta name="description" content="nml's site">
 
-	<script type="text/javascript" src="/assets/code/jquery.js" defer=""></script>
+	<script type="text/javascript" src="/assets/code/jquery.js"></script>
 
 	<link rel="stylesheet" href="/assets/code/global.css" media="screen">
 	<link rel="stylesheet" href="/assets/code/css/home.css" media="screen">
-	<!-- <script type="text/javascript" src="/assets/code/global.js" defer=""></script> -->
+	<script type="text/javascript" src="/assets/code/global.js"></script>
 	<script type="text/javascript" src="/assets/code/js/home.js" defer=""></script>
 
 
@@ -29,7 +29,7 @@
 		<header>
 			<img class="logo" src="/assets/images/nml_logo.png">
 		</header>
-		<h1 class="section-title">-- projects --</h1>
+		<h1 class="section-title" data-hl="projects">-- projects --</h1>
 		<div id="cards" class="cards">
 			<div class="card-wrapper">
 				<a class="card" style="--color: #ffaabb" href = "https://modrinth.com/resourcepack/birch-to-cherry-blossom">
@@ -38,8 +38,8 @@
 						<img src="/assets/home/modrinth.svg" alt="modrinth">
 					</div>
 					<img class="logo" src="/assets/home/btcb_logo.webp" alt="">
-					<h2 class="title">Birch to Cherry Blossom</h2>
-					<p class="desc">Simple resourcepack for updates <1.19.3 to replace all birch textures to Cherry Blossoms from 1.20</p>
+					<h2 class="title" data-hl="btcb.title">Birch to Cherry Blossom</h2>
+					<p class="desc" data-hl="btcb.desc">Simple resourcepack for updates <1.19.3 to replace all birch textures to Cherry Blossoms from 1.20</p>
 					<span class="pattern" style="background-image: url(/assets/home/minecraft_pattern.png)"></span>
 				</a>
 			</div>
@@ -47,8 +47,8 @@
 				<a class="card" style="--color: #CCFFAA" href = "/p/gempaint">
 					<img class="banner" src="/assets/home/pgtm_bg.png" alt="">
 					<img class="logo" src="/assets/home/pgtm_logo.png" alt="">
-					<h2 class="title">Painted Gemspark image generator</h2>
-					<p class="desc">Transform any image into painted gemspark walls</p>
+					<h2 class="title" data-hl="pgtm.title">Painted Gemspark image generator</h2>
+					<p class="desc" data-hl="pgtm.desc">Transform any image into painted gemspark walls</p>
 					<span class="pattern" style="background-image: url(/assets/home/terraria_pattern.png)"></span>
 				</a>
 			</div>
@@ -56,13 +56,13 @@
 				<a class="card disabled" style="--color: #5865F2">
 					<span class="banner" src="" alt=""></span>
 					<img class="logo" src="/assets/home/dct_logo.png" alt="">
-					<h2 class="title">Discord CSS Tweaks</h2>
-					<p class="desc">Customize your Discord theme with quality-of-life features<br>(wip)</p>
+					<h2 class="title" data-hl="dct.title">Discord CSS Tweaks</h2>
+					<p class="desc" data-hl="dct.desc">Customize your Discord theme with quality-of-life features<br>(wip)</p>
 					<span class="pattern" style="background-image: url(/assets/home/discord_pattern.png)"></span>
 				</a>
 			</div>
 		</div>
-		<h1 class="section-title">-- socials --</h1>
+		<h1 class="section-title" data-hl="socials">-- socials --</h1>
 		<div class="contacts">
 			<a class="tab" rel="me" href="https://github.com/thenml">
 				<img src="/assets/home/github.png" alt="" style="border-radius: 50%;">
@@ -94,5 +94,7 @@
 		-nml
 	</footer>
 </body>
+
+<script>translatePage("home")</script>
 
 </html>
