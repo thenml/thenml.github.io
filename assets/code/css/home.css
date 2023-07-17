@@ -21,10 +21,9 @@
 .cards {
     display: flex;
     width: 80%;
-    height: fit-content;
     margin: 5% auto;
-    justify-content: space-between;
     flex-wrap: wrap;
+    column-gap: 24px;
 }
 
 .card-wrapper {
@@ -42,7 +41,10 @@
     color: #fff;
     background-color: #181a22;
     transform-style: preserve-3d;
-    transform: perspective(3000px) rotateY(calc(var(--rotateX) * 1deg)) rotateX(calc(var(--rotateY) * 1deg));
+    transform:
+        perspective(3000px)
+        rotateY(calc(var(--rotateX) * 1deg))
+        rotateX(calc(var(--rotateY) * 1deg));
 
     transition-duration: 1s;
     border-radius: 10%;
@@ -170,41 +172,45 @@
 
 
 .contacts {
+    width: 80%;
     display: flex;
     max-width: fit-content;
     justify-content: space-between;
     margin: auto;
-    flex-wrap: nowrap;
+    padding-bottom: 200px;
+    flex-wrap: wrap;
+    gap: 5px;
 }
 
 .tab {
     display: flex;
     width: 60px;
     height: 60px;
-    margin: 5px;
+    margin: auto;
     border: none;
     border-radius: 30px;
     background-color: #181a22;
     transition-duration: 300ms;
     color: inherit;
-    font: inherit;
-    text-align: right;
+    text-align: center;
     text-decoration: none;
-    align-items: center;
-    overflow: hidden;
+}
+.tab span {
+    position: relative;
+    left: -50%;
+    top: 76px;
+    width: fit-content;
+    height: fit-content;
+    padding: 4px;
+    background-color: #181a22;
+    border-radius: 4px;
+    opacity: 0;
+    transition-duration: 300ms;
+    transform: translateX(-50%);
 }
 
-.tab:hover {
-    width: 120px;
-}
-
-.tab:hover img {
-    filter: none !important;
-}
-
-.tab:hover span {
-    opacity: 1;
-}
+.tab:hover img { filter: none }
+.tab:hover span { opacity: 1 }
 
 .tab img {
     width: 40px;
@@ -213,10 +219,6 @@
     transition-duration: 300ms;
     object-fit: contain;
     filter: brightness(1) grayscale(1);
-}
-
-.tab span {
-    transition-duration: 300ms;
 }
 
 
@@ -228,22 +230,24 @@
 
 @keyframes cubes {
     0% {
-        transform: rotate(0deg);
+        border-radius: 0%;
+        opacity: 0;
+        bottom: -5%;
     }
-
     100% {
-        transform: rotate(360deg);
+        border-radius: 50%;
+        opacity: 1;
+        bottom: 105%;
     }
 }
 
 @keyframes cubes-init {
-    0% {
-        transform: translateY(500px) rotate(-180deg);
-    }
-
-    100% {
-        transform: translateY(0px) rotate(0deg);
-    }
+    0% { transform: translateY(500px) rotate(-180deg) }
+    100% { transform: translateY(0px) rotate(0deg) }
+}
+@keyframes cubes-rotate {
+    0% { transform: rotate(0deg) }
+    100% { transform: rotate(360deg) }
 }
 
 .background {
@@ -260,11 +264,31 @@
 }
 
 .background li {
-    position: absolute;
+    --left: unset;
+    --right: unset;
     display: block;
+    position: absolute;
     list-style: none;
-    width: 20px;
-    height: 20px;
+    aspect-ratio: 1;
+
+    left: calc(var(--left) * 15%);
+    right: calc(var(--right) * 15%);
+
     background: rgba(255, 255, 255, 0.2);
-    animation: cubes-init 1s ease-out;
+}
+
+@media only screen and (max-width: 1000px){
+    .card {
+        background-color: rgb(58, 60, 68);
+        box-shadow: none;
+    }
+    .card, .card :is(.mark, img.logo, .title, .desc) { transform: none }
+    .card :is(.mark, .pattern) { opacity: 1 }
+
+    .tab img { filter: none; }
+
+    .background li {
+        left: calc(var(--mobile) * 110% - 5%);
+        right: unset;
+    }
 }
